@@ -1,6 +1,14 @@
-<div style="text-align: center; margin-top: 100px">
-  <h1>Login Page</h1>
-  <button (click)="handleLogin()" style="padding: 10px 20px; cursor: pointer;">
-    Click to Login (Redirect to Home)
-  </button>
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="logo-circle">GD</div>
+    <h2>Gather Donation</h2>
+    <p>Sign in to continue</p>
+    
+    <input type="email" placeholder="Email" class="lav-input">
+    <input type="password" placeholder="Password" class="lav-input">
+    
+    <div class="button-group">
+      <button (click)="handleLogin()" class="btn-main">Login</button>
+    </div>
+  </div>
 </div>
