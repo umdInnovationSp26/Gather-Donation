@@ -101,3 +101,40 @@ label {
   cursor: pointer;
   font-weight: 600;
 }
+
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #eee;
+}
+
+.divider:not(:empty)::before { margin-right: .5em; }
+.divider:not(:empty)::after { margin-left: .5em; }
+
+.btn-guest {
+  width: 100%;
+  background-color: transparent;
+  color: var(--btn-purple);
+  border: 2px solid var(--input-lavender);
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-guest:hover {
+  background-color: var(--input-lavender);
+  color: #5D2E8E;
+}
