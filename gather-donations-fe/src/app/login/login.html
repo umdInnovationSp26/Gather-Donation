@@ -1,14 +1,46 @@
-<div class="login-wrapper">
-  <div class="login-card">
-    <div class="logo-circle">GD</div>
-    <h2>Gather Donation</h2>
-    <p>Sign in to continue</p>
-    
-    <input type="email" placeholder="Email" class="lav-input">
-    <input type="password" placeholder="Password" class="lav-input">
-    
-    <div class="button-group">
-      <button (click)="handleLogin()" class="btn-main">Login</button>
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <div class="logo-box">Cool Name</div>
+    <nav>
+      <ul>
+        <li class="active"><i class="icon-home"></i> Home</li>
+        <li><i class="icon-post"></i> Post Donations</li>
+        <li><i class="icon-request"></i> Request Donations</li>
+        </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <span><i class="icon-settings"></i> Settings</span>
+      <span><i class="icon-logout"></i> Log out</span>
     </div>
-  </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="top-bar">
+      <div class="user-profile">
+        <span>Jane Doe</span>
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <section class="form-card">
+      <h2>Login</h2>
+      
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="Enter your email" class="custom-input">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" placeholder="••••••••" class="custom-input">
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-primary">Login</button>
+        <button class="btn-secondary">Sign Up</button>
+      </div>
+      
+      <p class="forgot-pass">Forgot Password?</p>
+    </section>
+  </main>
 </div>
