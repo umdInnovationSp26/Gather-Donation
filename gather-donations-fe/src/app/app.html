@@ -1,1 +1,29 @@
-<router-outlet />
+<div class="shell">
+  <header class="topbar">
+    <div class="logo">Cool Name</div>
+    <div class="user-info">
+      <span class="username">Jane Doe</span>
+      <span class="token-badge"> 32 <span class="token-icon">$</span> </span>
+      <img class="avatar" src="" alt="avatar" />
+    </div>
+  </header>
+
+  <div class="body">
+    <nav class="sidebar">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"> Home </a>
+      <a routerLink="/post-donations" routerLinkActive="active"> Post Donations </a>
+      <a routerLink="/request-donations" routerLinkActive="active"> Request Donations </a>
+      <a routerLink="/volunteer" routerLinkActive="active"> Volunteer </a>
+      <a routerLink="/active-requests" routerLinkActive="active"> Active Requests </a>
+
+      <div class="sidebar-bottom">
+        <a routerLink="/settings" routerLinkActive="active"> Settings </a>
+        <a href="#"> Log out </a>
+      </div>
+    </nav>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>
