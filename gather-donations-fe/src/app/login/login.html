@@ -1,0 +1,31 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="logo-box">Cool Name</div>
+    
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Enter your credentials to access your dashboard</p>
+
+    <div class="input-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="Enter your email" class="custom-input">
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" placeholder="••••••••" class="custom-input">
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn-primary" (click)="handleLogin()">Login</button>
+      <button class="btn-secondary">Sign Up</button>
+    </div>
+
+    <div class="divider">
+      <span>or</span>
+    </div>
+
+    <button class="btn-guest" (click)="handleLogin()">Continue as Guest</button>
+    
+    <p class="forgot-pass">Forgot Password?</p>
+  </div>
+</div>
