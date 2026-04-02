@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RequestDonation } from './request-donation';
+import { RequestDonations } from './request-donations';
 
-describe('RequestDonation', () => {
-  let component: RequestDonation;
-  let fixture: ComponentFixture<RequestDonation>;
+describe('RequestDonations', () => {
+  let component: RequestDonations;
+  let fixture: ComponentFixture<RequestDonations>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RequestDonation],
+      imports: [RequestDonations],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RequestDonation);
+    fixture = TestBed.createComponent(RequestDonations);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
