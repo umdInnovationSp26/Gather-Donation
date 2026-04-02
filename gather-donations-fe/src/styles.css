@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+
+*, html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --purple: #a855f7;
+  --purple-dark: #9333ea;
+  --purple-light: #d8b4fe;
+  --sidebar-bg: #c084fc;
+  --topbar-bg: #c084fc;
+  --active-bg: #f3e8ff;
+  --text-dark: #1a1a1a;
+}
