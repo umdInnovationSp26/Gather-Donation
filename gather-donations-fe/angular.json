@@ -26,8 +26,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/_redirects"
             ],
+            "outputPath": "dist/gather-donations-fe",
             "styles": ["src/styles.css"]
           },
           "configurations": {
