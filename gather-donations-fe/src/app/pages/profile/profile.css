@@ -1,0 +1,78 @@
+.profile-page{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.user-name {
+  color: var(--btn-primary-bg);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+.button-section {
+  align-items: end;
+}
+
+.left-section {
+  display: flex;
+}
+
+.edit-profile-button {
+  background-color: transparent;
+  font-size: 20px;
+  color: var(--indigo);
+  border: 2px solid var(--amethyst);
+  padding: 10px 20px 10px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+
+.edit-profile-button:hover {
+  background-color: var(--indigo);
+  color: var(--amethyst);
+  border-color: white;
+}
+
+.post-button {
+  background-color: var(--amethyst);
+  font-size: 20px;
+  color: var(--indigo);
+  border: none;
+  padding: 12px 22px 12px 22px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  font-family: 'Inter', sans-serif;
+  margin-right: 5px;
+}
+
+.post-button:hover {
+  background-color: var(--indigo);
+  color: var(--amethyst);
+  border-color: white;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}

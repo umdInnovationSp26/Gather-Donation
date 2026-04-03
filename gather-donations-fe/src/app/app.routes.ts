@@ -6,6 +6,7 @@ import { ActiveRequests } from './pages/active-requests/active-requests';
 import { PostDonations } from './pages/post-donations/post-donations';
 import { RequestDonations } from './pages/request-donations/request-donations';
 import { Volunteer } from './pages/volunteer/volunteer';
+import { Profile } from './pages/profile/profile';
 
 export const routes: Routes = [
   // Default: redirect to login
@@ -24,6 +25,7 @@ export const routes: Routes = [
       { path: 'request-donations', component: RequestDonations },
       { path: 'volunteer', component: Volunteer },
       { path: 'active-requests', component: ActiveRequests },
+      { path: 'profile', component: Profile}
     ],
   },
 ];
