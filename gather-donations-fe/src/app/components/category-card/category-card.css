@@ -1,0 +1,39 @@
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  background-color: var(--persian-indigo);
+  border: none;
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  font-family: inherit;
+}
+
+.category-card:hover {
+  background-color: var(--indigo);
+  transform: translateY(-2px);
+}
+
+.category-icon-slot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  /* Placeholder area — icon will be placed here */
+}
+
+.category-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
