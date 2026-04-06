@@ -3,11 +3,19 @@
   width: 100vw;
   background-color: var(--bg-page);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Keeps it centered vertically */
+  
+  /* CHANGE THIS: 'center' to 'flex-end' pushes it to the right */
+  justify-content: flex-end; 
+  
   font-family: 'Inter', sans-serif;
   margin: 0;
+
+  /* ADD THIS: Prevents the card from touching the very edge of the screen */
+  padding-right: 8%; 
+  box-sizing: border-box;
 }
+
 
 .login-card {
   background: var(--bg-card);
