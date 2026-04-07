@@ -1,0 +1,7 @@
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 240px;
+  max-width: 300px;
+}

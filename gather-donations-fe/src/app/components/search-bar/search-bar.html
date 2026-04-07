@@ -1,0 +1,12 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="query"
+    placeholder="Search....."
+    class="search-input"
+    (keyup.enter)="onSearch()"
+  />
+  <button class="search-btn" (click)="onSearch()" aria-label="Search">
+    Search
+  </button>
+</div>

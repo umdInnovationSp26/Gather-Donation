@@ -1,0 +1,55 @@
+.resources-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resources-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  text-align: center;
+}
+
+.resources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--btn-outline-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.resource-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--btn-outline-border);
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.resource-item:last-child {
+  border-bottom: none;
+}
+
+.resource-item:hover {
+  background-color: var(--input-bg);
+}
+
+.resource-icon-slot {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  /* Placeholder area — icon will be placed here */
+}
+
+.resource-name {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+}

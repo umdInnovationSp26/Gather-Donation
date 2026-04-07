@@ -1,0 +1,18 @@
+.categories-grid-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categories-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 560px;
+}

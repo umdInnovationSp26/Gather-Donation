@@ -1,0 +1,13 @@
+<section class="resources-panel">
+  <h3 class="resources-title">Resources</h3>
+  <ul class="resources-list">
+    @for (resource of resources; track resource.id) {
+      <li class="resource-item">
+        <div class="resource-icon-slot">
+          <!-- Icon will be added here later -->
+        </div>
+        <span class="resource-name">{{ resource.name }}</span>
+      </li>
+    }
+  </ul>
+</section>
