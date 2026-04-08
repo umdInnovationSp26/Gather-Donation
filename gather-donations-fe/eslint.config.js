@@ -57,6 +57,10 @@ module.exports = tseslint.config(
         {
           selector: ['variableLike', 'method', 'property'],
           format: ['camelCase'],
+          filter: {
+            regex: '^(?!standalone$|Monday$|Tuesday$|Wednesday$|Thursday$|Friday$|Saturday$|Sunday$).*$',
+            match: true,
+          },
         },
         {
           selector: 'typeLike',
@@ -67,6 +71,18 @@ module.exports = tseslint.config(
           types: ['boolean'],
           format: ['PascalCase'],
           prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+        // Allow Angular component properties
+        {
+          selector: 'property',
+          filter: 'standalone',
+          format: null,
+        },
+        // Allow day names as object keys
+        {
+          selector: 'property',
+          filter: '^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$',
+          format: null,
         },
       ],
       '@angular-eslint/directive-selector': [

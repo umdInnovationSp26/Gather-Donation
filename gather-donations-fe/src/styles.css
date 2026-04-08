@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*, html, body {
+*,
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,37 +18,37 @@
   --princeton-orange: #ff9100;
 
   /* ── Backgrounds ───────────────────────────────── */
-  --bg-page:           var(--white-pointer);  /* full-page background (login, etc.) */
-  --bg-content:        var(--white-pointer);  /* main content area */
-  --bg-card:           var(--white-pointer);  /* cards / modals */
+  --bg-page: var(--white-pointer); /* full-page background (login, etc.) */
+  --bg-content: var(--white-pointer); /* main content area */
+  --bg-card: var(--white-pointer); /* cards / modals */
 
   /* ── Navbar & Sidebar ──────────────────────────── */
-  --nav-bg:            var(--persian-indigo);  /* topbar + sidebar fill */
-  --nav-text:          var(--sunset);  /* nav link text */
-  --nav-active-bg:     var(--white-pointer);  /* active link highlight */
-  --nav-active-text:   var(--amethyst);  /* active link text */
-  --nav-hover-bg:      rgba(255, 255, 255, 0.3);
+  --nav-bg: var(--persian-indigo); /* topbar + sidebar fill */
+  --nav-text: var(--sunset); /* nav link text */
+  --nav-active-bg: var(--white-pointer); /* active link highlight */
+  --nav-active-text: var(--amethyst); /* active link text */
+  --nav-hover-bg: rgba(255, 255, 255, 0.3);
 
   /* ── Buttons ───────────────────────────────────── */
-  --btn-primary-bg:   var(--princeton-orange);  /* filled primary button */
-  --btn-primary-text:  #ffffff;
-  --btn-secondary-bg:  #D4B2F7;  /* softer secondary button */
-  --btn-secondary-text:#5D2E8E;
-  --btn-outline-border:#E4CCFF;  /* ghost / outline button border */
-  --btn-outline-text:  #9B51E0;
+  --btn-primary-bg: var(--princeton-orange); /* filled primary button */
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #d4b2f7; /* softer secondary button */
+  --btn-secondary-text: #5d2e8e;
+  --btn-outline-border: #e4ccff; /* ghost / outline button border */
+  --btn-outline-text: #9b51e0;
 
   /* ── Inputs ────────────────────────────────────── */
-  --input-bg:          #E4CCFF;  /* text field background */
+  --input-bg: #e4ccff; /* text field background */
 
   /* ── Fonts / Text ──────────────────────────────── */
-  --text-primary:      var(--sunset);
-  --text-secondary:    #444444;
-  --text-muted:        #888888;
-  --text-heading:      #333333;
+  --text-primary: var(--sunset);
+  --text-secondary: #444444;
+  --text-muted: #888888;
+  --text-heading: #333333;
 
   /* ── Accents ───────────────────────────────────── */
-  --accent-logo:       #FFC4C4;  /* brand logo box */
-  --accent-purple:     #a855f7;
-  --accent-purple-dark:#9333ea;
-  --accent-purple-light:#d8b4fe;
+  --accent-logo: #ffc4c4; /* brand logo box */
+  --accent-purple: #a855f7;
+  --accent-purple-dark: #9333ea;
+  --accent-purple-light: #d8b4fe;
 }

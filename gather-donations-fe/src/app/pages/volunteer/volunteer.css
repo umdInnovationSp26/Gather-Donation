@@ -1,0 +1,424 @@
+/* ─── Variables ─────────────────────────────────────────────── */
+:host {
+  --purple-primary: #a855c8;
+  --purple-light: #c084d8;
+  --purple-bg: #d8a8e8;
+  --purple-input: #b87acc;
+  --purple-input-hover: #c48ada;
+  --purple-dark: #7e22a0;
+  --purple-submit: #6b21a8;
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-medium: #4a4a4a;
+  --border-radius-input: 999px;
+  --border-radius-card: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ─── Page Layout ────────────────────────────────────────────── */
+.volunteer-page {
+  background: var(--white);
+  min-height: 100%;
+  padding: 32px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 28px 0;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── Form Groups ────────────────────────────────────────────── */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* ─── Inputs ─────────────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  max-width: 540px;
+  height: 52px;
+  padding: 0 24px;
+  background: var(--purple-input);
+  border: none;
+  border-radius: var(--border-radius-input);
+  font-size: 15px;
+  color: var(--white);
+  outline: none;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-input:focus {
+  background: var(--purple-input-hover);
+}
+
+/* ─── Select ─────────────────────────────────────────────────── */
+.select-wrapper {
+  position: relative;
+  max-width: 540px;
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  height: 52px;
+  padding: 0 44px 0 24px;
+  background: var(--purple-input);
+  border: none;
+  border-radius: var(--border-radius-input);
+  font-size: 15px;
+  color: var(--white);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.form-select:focus {
+  background: var(--purple-input-hover);
+}
+
+.form-select option {
+  background: var(--purple-dark);
+  color: var(--white);
+}
+
+.select-wrapper::after {
+  content: '▾';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* ─── Checkboxes ─────────────────────────────────────────────── */
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-dark);
+  user-select: none;
+  position: relative;
+}
+
+.checkbox-label input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--purple-primary);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--white);
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.checkbox-label input[type='checkbox']:checked + .checkbox-custom {
+  background: var(--purple-primary);
+  border-color: var(--purple-primary);
+}
+
+.checkbox-label input[type='checkbox']:checked + .checkbox-custom::after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--white);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* ─── Skills Section ─────────────────────────────────────────── */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skills-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.skills-subtitle {
+  font-size: 13px;
+  color: var(--text-medium);
+  margin: 0;
+}
+
+/* ─── Skill Card ─────────────────────────────────────────────── */
+.skill-card {
+  background: var(--purple-bg);
+  border-radius: var(--border-radius-card);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 620px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background: var(--purple-light);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 7px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.skill-tag:hover,
+.skill-tag.active {
+  background: var(--purple-dark);
+}
+
+/* ─── Skill Custom Input ─────────────────────────────────────── */
+.skill-input {
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 13px;
+  color: var(--text-dark);
+  outline: none;
+  width: 100%;
+  max-width: 380px;
+  box-sizing: border-box;
+  transition: background 0.2s;
+}
+
+.skill-input::placeholder {
+  color: var(--text-medium);
+}
+
+.skill-input:focus {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* ─── Slider ─────────────────────────────────────────────────── */
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 260px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--text-dark);
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-dark);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-dark);
+  cursor: pointer;
+  border: none;
+}
+
+.slider-value {
+  font-size: 13px;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+/* ─── Teach Days ─────────────────────────────────────────────── */
+.teach-days-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ─── Skill Card Footer ──────────────────────────────────────── */
+.skill-card-footer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.offer-btn {
+  background: var(--purple-primary);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.1s;
+}
+
+.offer-btn:hover {
+  background: var(--purple-dark);
+  transform: translateY(-1px);
+}
+
+.offer-btn:active {
+  transform: translateY(0);
+}
+
+.remove-skill-btn {
+  background: transparent;
+  color: var(--purple-dark);
+  border: 1.5px solid var(--purple-dark);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.remove-skill-btn:hover {
+  background: var(--purple-dark);
+  color: var(--white);
+}
+
+/* ─── Add Skill Button ───────────────────────────────────────── */
+.add-skill-btn {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--purple-primary);
+  border: 1.5px solid var(--purple-primary);
+  border-radius: 999px;
+  padding: 9px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.add-skill-btn:hover {
+  background: var(--purple-primary);
+  color: var(--white);
+}
+
+/* ─── Submit Footer ──────────────────────────────────────────── */
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.submit-btn {
+  background: var(--purple-submit);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 16px 52px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(107, 33, 168, 0.35);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: var(--purple-dark);
+  box-shadow: 0 6px 22px rgba(107, 33, 168, 0.45);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}

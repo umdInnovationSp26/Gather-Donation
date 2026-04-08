@@ -25,7 +25,7 @@ export const routes: Routes = [
       { path: 'request-donations', component: RequestDonations },
       { path: 'volunteer', component: Volunteer },
       { path: 'active-requests', component: ActiveRequests },
-      { path: 'profile', component: Profile}
+      { path: 'profile', component: Profile },
     ],
   },
 ];
