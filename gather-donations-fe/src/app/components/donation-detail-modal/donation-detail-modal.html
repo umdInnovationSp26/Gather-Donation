@@ -1,0 +1,23 @@
+@if (donation) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal" role="dialog" aria-modal="true" [attr.aria-label]="donation.title">
+      <button class="modal-close" (click)="onClose()" aria-label="Close">&#10005;</button>
+
+      <div class="modal-image-wrapper">
+        <img class="modal-image" [src]="donation.imageUrl" [alt]="donation.title" />
+        <span class="category-badge">{{ donation.categoryId }}</span>
+      </div>
+
+      <div class="modal-body">
+        <h2 class="modal-title">{{ donation.title }}</h2>
+        <p class="modal-donor">Posted by <strong>{{ donation.donor }}</strong> &middot; {{ donation.postedDate }}</p>
+        <p class="modal-description">{{ donation.description }}</p>
+
+        <div class="modal-actions">
+          <button class="btn-request">Request Item</button>
+          <button class="btn-cancel" (click)="onClose()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
