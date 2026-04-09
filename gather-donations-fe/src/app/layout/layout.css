@@ -16,10 +16,16 @@
 }
 
 .logo {
-  padding: 12px 24px;
-  border-radius: 16px;
-  font-weight: 700;
-  font-size: 1.1rem;
+  padding: 8px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 200, 128, 0.3);
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  color: var(--sunset);
+  text-shadow: 0 0 20px rgba(255, 200, 128, 0.4);
 }
 
 .user-info {
