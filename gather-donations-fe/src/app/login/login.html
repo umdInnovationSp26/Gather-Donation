@@ -1,31 +1,30 @@
 <div class="login-page">
   <div class="login-card">
     <div class="logo-box">Benevo</div>
-
     <h2>Welcome Back</h2>
-    <p class="subtitle">Enter your credentials to access your dashboard</p>
+    
+    <form (submit)="$event.preventDefault()"> 
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" name="email" [(ngModel)]="email" class="custom-input" />
+      </div>
 
-    <div class="input-group">
-      <label>Email Address</label>
-      <input type="email" placeholder="Enter your email" class="custom-input" />
-    </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" class="custom-input" />
+      </div>
 
-    <div class="input-group">
-      <label>Password</label>
-      <input type="password" placeholder="••••••••" class="custom-input" />
-    </div>
+      <div class="action-buttons">
+        <button type="button" class="btn-primary" (click)="handleLogin()">Login</button>
+        <button type="button" class="btn-google" (click)="handleGoogleLogin()">
+           <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt=""> 
+           Login with Google
+        </button>
+      </div>
+    </form>
 
-    <div class="action-buttons">
-      <button class="btn-primary" (click)="handleLogin()">Login</button>
-      <button class="btn-secondary">Sign Up</button>
-    </div>
+    <div class="divider"><span>or</span></div>
 
-    <div class="divider">
-      <span>or</span>
-    </div>
-
-    <button class="btn-guest" (click)="handleLogin()">Continue as Guest</button>
-
-    <p class="forgot-pass">Forgot Password?</p>
+    <button class="btn-guest" (click)="handleGuestLogin()">Continue as Guest</button>
   </div>
 </div>

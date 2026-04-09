@@ -3,15 +3,13 @@
   width: 100vw;
   background-color: var(--bg-page);
   display: flex;
-  align-items: center; /* Keeps it centered vertically */
-
-  /* CHANGE THIS: 'center' to 'flex-end' pushes it to the right */
+  align-items: center; 
   justify-content: flex-end;
 
   font-family: 'Inter', sans-serif;
   margin: 0;
 
-  /* ADD THIS: Prevents the card from touching the very edge of the screen */
+
   padding-right: 8%;
   box-sizing: border-box;
 }
@@ -100,6 +98,32 @@ label {
 
 .btn-primary:hover {
   transform: scale(1.02);
+}
+
+.btn-google {
+  flex: 1;
+  background-color: #ffffff;
+  color: #3c4043;
+  border: 1px solid #dadce0;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between logo and text */
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-google img {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-google:hover {
+  background-color: #f8f9fa;
+  border-color: #d2e3fc;
 }
 
 .forgot-pass {

@@ -1,18 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule], 
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class LoginComponent {
-  constructor(private router: Router) {}
+  private router = inject(Router);
+  email = '';
+  password = '';
 
   handleLogin() {
-    console.log('Redirecting to home...');
-    this.router.navigate(['/home']); // go to /home
+    
+    if (this.email && this.password) {
+      localStorage.setItem('isLoggedIn', 'true');
+      this.router.navigate(['/home']);
+    }
+  }
+
+  handleGoogleLogin() {
+    localStorage.setItem('isLoggedIn', 'true');
+    this.router.navigate(['/home']);
+  }
+
+  handleGuestLogin() {
+    localStorage.setItem('isLoggedIn', 'true');
+    this.router.navigate(['/home']);
   }
 }
