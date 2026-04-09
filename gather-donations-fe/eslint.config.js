@@ -71,6 +71,11 @@ module.exports = tseslint.config(
           types: ['boolean'],
           format: ['PascalCase'],
           prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+          filter: {
+            // Exclude Angular decorator metadata properties
+            regex: '^(standalone|preserveWhitespaces|changeDetection)$',
+            match: false,
+          },
         },
         // Allow Angular component properties
         {
