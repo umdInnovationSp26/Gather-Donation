@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login';
 import { Layout } from './layout/layout';
-import { authGuard } from './auth-guard'; 
+import { authGuard } from './auth-guard';
 
 
 import { Home } from './pages/home/home';
@@ -14,13 +14,18 @@ import { Profile } from './pages/profile/profile';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, 
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: '',
     component: Layout,
     canActivate: [authGuard],
     children: [
-       
+      { path: 'home', component: Home },
+      { path: 'post-donations', component: PostDonations },
+      { path: 'request-donations', component: RequestDonations },
+      { path: 'volunteer', component: Volunteer },
+      { path: 'active-requests', component: ActiveRequests },
+      { path: 'profile', component: Profile },
     ]
   },
   { path: '**', redirectTo: 'login' }
