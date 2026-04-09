@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryCard } from '../category-card/category-card';
 
 export interface Category {
@@ -23,4 +23,10 @@ const DEFAULT_CATEGORIES: Category[] = [
 })
 export class CategoriesGrid {
   @Input() categories: Category[] = DEFAULT_CATEGORIES;
+  @Input() selectedCategory = 'all';
+  @Output() categoryChange = new EventEmitter<string>();
+
+  select(id: string): void {
+    this.categoryChange.emit(id);
+  }
 }

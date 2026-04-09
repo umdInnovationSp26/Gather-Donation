@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-category-card',
@@ -9,4 +9,10 @@ import { Component, Input } from '@angular/core';
 })
 export class CategoryCard {
   @Input() label = '';
+  @Input() selected = false;
+  @Output() cardClick = new EventEmitter<void>();
+
+  onClick(): void {
+    this.cardClick.emit();
+  }
 }

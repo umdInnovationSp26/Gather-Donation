@@ -2,7 +2,11 @@
   <h2 class="categories-title">Categories</h2>
   <div class="categories-grid">
     @for (category of categories; track category.id) {
-      <app-category-card [label]="category.label" />
+      <app-category-card
+        [label]="category.label"
+        [selected]="category.id === selectedCategory"
+        (cardClick)="select(category.id)"
+      />
     }
   </div>
 </section>
