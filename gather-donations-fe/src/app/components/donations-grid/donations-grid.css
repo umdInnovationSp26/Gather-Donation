@@ -1,0 +1,62 @@
+.donations-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.donations-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.donations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 24px 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.page-btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1.5px solid var(--btn-outline-border);
+  background: #fff;
+  color: var(--btn-outline-text);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: var(--persian-indigo);
+  color: #fff;
+  border-color: var(--persian-indigo);
+}
+
+.page-btn.active {
+  background: var(--persian-indigo);
+  color: #fff;
+  border-color: var(--persian-indigo);
+}
+
+.page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

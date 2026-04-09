@@ -1,0 +1,11 @@
+<article class="donation-card">
+  <div class="card-image-wrapper">
+    <img class="card-image" [src]="donation.imageUrl" [alt]="donation.title" />
+    <span class="category-badge">{{ donation.categoryId }}</span>
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{{ donation.title }}</h3>
+    <p class="card-donor">Posted by {{ donation.donor }}</p>
+    <button class="btn-details" (click)="onViewDetails()">View Details</button>
+  </div>
+</article>

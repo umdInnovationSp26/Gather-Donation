@@ -1,0 +1,46 @@
+<section class="donations-section">
+  <h2 class="donations-title">Active Donations</h2>
+
+  @if (paginated.length === 0) {
+    <p class="empty-state">No donations in this category yet.</p>
+  } @else {
+    <div class="donations-grid">
+      @for (donation of paginated; track donation.id) {
+        <app-donation-card
+          [donation]="donation"
+          (viewDetails)="onViewDetails($event)"
+        />
+      }
+    </div>
+
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button
+          class="page-btn"
+          [disabled]="currentPage === 1"
+          (click)="goToPage(currentPage - 1)"
+        >
+          &#8592;
+        </button>
+
+        @for (page of pages; track page) {
+          <button
+            class="page-btn"
+            [class.active]="page === currentPage"
+            (click)="goToPage(page)"
+          >
+            {{ page }}
+          </button>
+        }
+
+        <button
+          class="page-btn"
+          [disabled]="currentPage === totalPages"
+          (click)="goToPage(currentPage + 1)"
+        >
+          &#8594;
+        </button>
+      </div>
+    }
+  }
+</section>
