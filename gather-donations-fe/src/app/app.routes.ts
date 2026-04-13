@@ -10,10 +10,11 @@ import { RequestDonations } from './pages/request-donations/request-donations';
 import { Volunteer } from './pages/volunteer/volunteer';
 import { ActiveRequests } from './pages/active-requests/active-requests';
 import { Profile } from './pages/profile/profile';
-
+import { SignupComponent } from './signup/signup';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent }, // Add this line!
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: '',

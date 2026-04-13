@@ -174,19 +174,19 @@ label {
   color: var(--btn-secondary-text);
 }
 
-.login-footer {
+.signup-footer {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
     color: #555;
 }
 
-.login-footer a {
+.signup-footer a {
     color: var(--btn-primary-bg);
     text-decoration: none;
     font-weight: bold;
 }
 
-.login-footer a:hover {
+.signup-footer a:hover {
     text-decoration: underline;
 }

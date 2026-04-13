@@ -1,0 +1,40 @@
+
+<div class="signup-page">
+   
+  <div class="signup-card">
+    <div class="logo-box">Benevo</div>
+    <h2>Welcome! </h2>
+    
+    <form (submit)="$event.preventDefault()"> 
+      <div class="input-group">
+        <label>Email Address</label>
+        <input type="email" name="email" [(ngModel)]="email" class="custom-input" />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" class="custom-input" />
+      </div>
+
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="custom-input" />
+      </div>
+
+      <div class="action-buttons">
+        <button type="button" class="btn-primary" (click)="handleSignup()">Sign Up</button>
+        <button type="button" class="btn-google" (click)="handleGoogleSignup()">
+           <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt=""> 
+           Signup with Google
+        </button>
+
+
+
+      </div>
+      <div class="signup-footer">
+  <p>Already have an account? <a routerLink="/login">Login</a></p>
+</div>
+    </form>
+
+  </div>
+</div>
