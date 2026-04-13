@@ -9,7 +9,7 @@ body {
 }
 
 :root {
-  /* ── Colors ─────────────────────────────────────── */
+  /* ── OLD Colors ─────────────────────────────────────── */
   --white-pointer: #fdf6ff;
   --amethyst: #9d4edd;
   --indigo: #3d0066;
@@ -17,37 +17,46 @@ body {
   --sunset: #ffc880;
   --princeton-orange: #ff9100;
 
+  /* ---- New Colors -------- */
+  --white: #ffffff;
+  --regal-navy: #053D76;
+  --tropical-teal: #56A3A6;
+  --light-teal: #AED4D5;
+  --pastel-pink: #FFC2CA;
+  --lime-cream: #CAE58A;
+  --white-smoke: #F5F5F5;
+
   /* ── Backgrounds ───────────────────────────────── */
-  --bg-page: var(--white-pointer); /* full-page background (login, etc.) */
-  --bg-content: var(--white-pointer); /* main content area */
-  --bg-card: var(--white-pointer); /* cards / modals */
+  --bg-page: var(--white); /* full-page background (login, etc.) */
+  --bg-content: var(--white); /* main content area */
+  --bg-card: var(--white-smoke); /* cards / modals */
 
   /* ── Navbar & Sidebar ──────────────────────────── */
-  --nav-bg: var(--persian-indigo); /* topbar + sidebar fill */
-  --nav-text: var(--sunset); /* nav link text */
-  --nav-active-bg: var(--white-pointer); /* active link highlight */
-  --nav-active-text: var(--amethyst); /* active link text */
-  --nav-hover-bg: rgba(255, 255, 255, 0.3);
+  --nav-bg: var(--regal-navy); /* topbar + sidebar fill */
+  --nav-text: var(--white); /* nav link text */
+  --nav-active-bg: var(--white-smoke); /* active link highlight */
+  --nav-active-text: var(--tropical-teal); /* active link text */
+  --nav-hover-bg: rgba(255, 255, 255, 0.2);
 
   /* ── Buttons ───────────────────────────────────── */
-  --btn-primary-bg: var(--princeton-orange); /* filled primary button */
+  --btn-primary-bg: var(--tropical-teal); /* filled primary button */
   --btn-primary-text: #ffffff;
-  --btn-secondary-bg: #d4b2f7; /* softer secondary button */
-  --btn-secondary-text: #5d2e8e;
-  --btn-outline-border: #e4ccff; /* ghost / outline button border */
-  --btn-outline-text: #9b51e0;
+  --btn-secondary-bg: var(--light-teal); /* softer secondary button */
+  --btn-secondary-text: (--tropical-teal);
+  --btn-outline-border: var(--light-teal); /* ghost / outline button border */
+  --btn-outline-text: var(--tropical-teal);
 
   /* ── Inputs ────────────────────────────────────── */
   --input-bg: #e4ccff; /* text field background */
 
   /* ── Fonts / Text ──────────────────────────────── */
-  --text-primary: var(--sunset);
+  --text-primary: var(--tropical-teal);
   --text-secondary: #444444;
   --text-muted: #888888;
   --text-heading: #333333;
 
   /* ── Accents ───────────────────────────────────── */
-  --accent-logo: #ffc4c4; /* brand logo box */
+  --accent-logo: var(--pastel-pink); /* brand logo box */
   --accent-purple: #a855f7;
   --accent-purple-dark: #9333ea;
   --accent-purple-light: #d8b4fe;
