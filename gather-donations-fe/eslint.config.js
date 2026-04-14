@@ -109,6 +109,13 @@ module.exports = tseslint.config(
       'prettier/prettier': 'warn',
     },
   },
+  // API model files mirror Django's snake_case JSON — disable naming rule there
+  {
+    files: ['**/models/**/*.ts'],
+    rules: {
+      '@typescript-eslint/naming-convention': 'off',
+    },
+  },
   ...angular.configs.templateRecommended.map(c => ({
     ...c,
     files: ['**/*.html'],
