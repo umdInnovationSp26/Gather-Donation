@@ -42,12 +42,14 @@ body {
   --btn-primary-bg: var(--tropical-teal); /* filled primary button */
   --btn-primary-text: #ffffff;
   --btn-secondary-bg: var(--light-teal); /* softer secondary button */
-  --btn-secondary-text: (--tropical-teal);
+  --btn-secondary-text: var(--tropical-teal);
   --btn-outline-border: var(--light-teal); /* ghost / outline button border */
   --btn-outline-text: var(--tropical-teal);
+  --btn-highlight-bg: var(--lime-cream); /* lime green for things like submit buttons */
+  --btn-highlight-text: var(--white-smoke);
 
   /* ── Inputs ────────────────────────────────────── */
-  --input-bg: #e4ccff; /* text field background */
+  --input-bg: var(--light-teal); /* text field background */
 
   /* ── Fonts / Text ──────────────────────────────── */
   --text-primary: var(--tropical-teal);
@@ -57,7 +59,7 @@ body {
 
   /* ── Accents ───────────────────────────────────── */
   --accent-logo: var(--pastel-pink); /* brand logo box */
-  --accent-purple: #a855f7;
-  --accent-purple-dark: #9333ea;
-  --accent-purple-light: #d8b4fe;
+  --accent-purple: var(--tropical-teal);
+  --accent-purple-dark: var(--regal-navy);
+  --accent-purple-light: var(--light-teal);
 }
