@@ -1,12 +1,5 @@
 /* ─── Variables ─────────────────────────────────────────────── */
 :host {
-  --purple-primary: #a855c8;
-  --purple-light: #c084d8;
-  --purple-bg: #d8a8e8;
-  --purple-input: #b87acc;
-  --purple-input-hover: #c48ada;
-  --purple-dark: #7e22a0;
-  --purple-submit: #6b21a8;
   --white: #ffffff;
   --text-dark: #1a1a1a;
   --text-medium: #4a4a4a;
@@ -63,11 +56,11 @@
   max-width: 540px;
   height: 52px;
   padding: 0 24px;
-  background: var(--purple-input);
+  background: var(--white-smoke);
   border: none;
   border-radius: var(--border-radius-input);
   font-size: 15px;
-  color: var(--white);
+  color: var(--text-medium);
   outline: none;
   box-sizing: border-box;
   transition: background 0.2s ease;
@@ -78,7 +71,7 @@
 }
 
 .form-input:focus {
-  background: var(--purple-input-hover);
+  background: var(--input-bg);
 }
 
 /* ─── Select ─────────────────────────────────────────────────── */
@@ -92,11 +85,11 @@
   width: 100%;
   height: 52px;
   padding: 0 44px 0 24px;
-  background: var(--purple-input);
+  background: var(--white-smoke);
   border: none;
   border-radius: var(--border-radius-input);
   font-size: 15px;
-  color: var(--white);
+  color: var(--text-medium);
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -106,12 +99,12 @@
 }
 
 .form-select:focus {
-  background: var(--purple-input-hover);
+  background: var(--input-bg);
 }
 
 .form-select option {
-  background: var(--purple-dark);
-  color: var(--white);
+  /* background: var(--text-dark); */
+  color: var(--text-medium);
 }
 
 .select-wrapper::after {
@@ -120,7 +113,7 @@
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--white);
+  color: var(--text-medium);
   font-size: 14px;
   pointer-events: none;
 }
@@ -153,21 +146,21 @@
 .checkbox-custom {
   width: 18px;
   height: 18px;
-  border: 2px solid var(--purple-primary);
+  border: 2px solid var(--btn-primary-bg);
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: var(--white);
+  background: var(--white-smoke);
   transition:
     background 0.15s,
     border-color 0.15s;
 }
 
 .checkbox-label input[type='checkbox']:checked + .checkbox-custom {
-  background: var(--purple-primary);
-  border-color: var(--purple-primary);
+  background: var(--tropical-teal);
+  border-color: var(--tropical-teal);
 }
 
 .checkbox-label input[type='checkbox']:checked + .checkbox-custom::after {
@@ -203,10 +196,11 @@
 
 /* ─── Skill Card ─────────────────────────────────────────────── */
 .skill-card {
-  background: var(--purple-bg);
-  border-radius: var(--border-radius-card);
-  padding: 20px;
+  background: var(--bg-card);
+  border-color: var(--bg-card);
+  padding: 30px;
   display: flex;
+  border-radius: 16px;
   flex-direction: column;
   gap: 14px;
   max-width: 620px;
@@ -219,7 +213,7 @@
 }
 
 .skill-tag {
-  background: var(--purple-light);
+  background: var(--light-teal);
   color: var(--white);
   border: none;
   border-radius: 999px;
@@ -232,7 +226,7 @@
 
 .skill-tag:hover,
 .skill-tag.active {
-  background: var(--purple-dark);
+  background: var(--tropical-teal);
 }
 
 /* ─── Skill Custom Input ─────────────────────────────────────── */
@@ -281,9 +275,9 @@
   -webkit-appearance: none;
   appearance: none;
   width: 260px;
-  height: 4px;
+  height: 2px;
   border-radius: 2px;
-  background: var(--text-dark);
+  background: var(--text-medium);
   outline: none;
   cursor: pointer;
 }
@@ -294,7 +288,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--text-dark);
+  background: var(--text-medium);
   cursor: pointer;
 }
 
@@ -302,7 +296,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: var(--text-dark);
+  background: var(--tropical-teal);
   cursor: pointer;
   border: none;
 }
@@ -326,11 +320,12 @@
   gap: 10px;
   align-items: center;
   flex-wrap: wrap;
+
 }
 
 .offer-btn {
-  background: var(--purple-primary);
-  color: var(--white);
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
   border: none;
   border-radius: 999px;
   padding: 10px 28px;
@@ -343,7 +338,8 @@
 }
 
 .offer-btn:hover {
-  background: var(--purple-dark);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
   transform: translateY(-1px);
 }
 
@@ -353,11 +349,12 @@
 
 .remove-skill-btn {
   background: transparent;
-  color: var(--purple-dark);
-  border: 1.5px solid var(--purple-dark);
+  color: var(--pastel-pink);
+  border: 1.5px solid var(--pastel-pink);
   border-radius: 999px;
   padding: 9px 20px;
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition:
     background 0.2s,
@@ -365,7 +362,7 @@
 }
 
 .remove-skill-btn:hover {
-  background: var(--purple-dark);
+  background: var(--pastel-pink);
   color: var(--white);
 }
 
@@ -373,8 +370,8 @@
 .add-skill-btn {
   align-self: flex-start;
   background: transparent;
-  color: var(--purple-primary);
-  border: 1.5px solid var(--purple-primary);
+  color: var(--btn-primary-bg);
+  border: 1.5px solid var(--btn-primary-bg);
   border-radius: 999px;
   padding: 9px 22px;
   font-size: 14px;
@@ -386,7 +383,7 @@
 }
 
 .add-skill-btn:hover {
-  background: var(--purple-primary);
+  background: var(--btn-secondary-bg);
   color: var(--white);
 }
 
@@ -398,7 +395,7 @@
 }
 
 .submit-btn {
-  background: var(--purple-submit);
+  background: var(--regal-navy);
   color: var(--white);
   border: none;
   border-radius: 999px;
@@ -406,7 +403,7 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(107, 33, 168, 0.35);
+  box-shadow: 0 4px 18px rgba(5,61,118, 0.35);
   transition:
     background 0.2s,
     box-shadow 0.2s,
@@ -414,8 +411,9 @@
 }
 
 .submit-btn:hover {
-  background: var(--purple-dark);
-  box-shadow: 0 6px 22px rgba(107, 33, 168, 0.45);
+  background: var(--btn-highlight-bg);
+  color: #2f6124;
+  box-shadow: 0 6px 22px rgba(43, 99, 31, 0.45);
   transform: translateY(-1px);
 }
 
