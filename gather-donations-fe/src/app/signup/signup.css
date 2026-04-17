@@ -167,6 +167,30 @@ label {
   color: var(--btn-secondary-text);
 }
 
+.error-message {
+  color: #d93025;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.signup-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.signup-footer a {
+  color: var(--btn-primary-bg);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+
 .login-footer {
     text-align: center;
     margin-top: 20px;

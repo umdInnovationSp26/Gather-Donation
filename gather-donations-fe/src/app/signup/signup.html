@@ -1,11 +1,26 @@
 
 <div class="signup-page">
-   
+
   <div class="signup-card">
     <div class="logo-box">Benevo</div>
-    <h2>Welcome! </h2>
-    
-    <form (submit)="$event.preventDefault()"> 
+    <h2>Welcome!</h2>
+
+    <form (submit)="$event.preventDefault()">
+      <div class="input-group">
+        <label>First Name</label>
+        <input type="text" name="firstName" [(ngModel)]="firstName" class="custom-input" />
+      </div>
+
+      <div class="input-group">
+        <label>Last Name</label>
+        <input type="text" name="lastName" [(ngModel)]="lastName" class="custom-input" />
+      </div>
+
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" name="username" [(ngModel)]="username" class="custom-input" />
+      </div>
+
       <div class="input-group">
         <label>Email Address</label>
         <input type="email" name="email" [(ngModel)]="email" class="custom-input" />
@@ -21,19 +36,23 @@
         <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" class="custom-input" />
       </div>
 
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
       <div class="action-buttons">
-        <button type="button" class="btn-primary" (click)="handleSignup()">Sign Up</button>
-        <button type="button" class="btn-google" (click)="handleGoogleSignup()">
-           <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt=""> 
-           Signup with Google
+        <button type="button" class="btn-primary" (click)="handleSignup()" [disabled]="isLoading">
+          {{ isLoading ? 'Signing up...' : 'Sign Up' }}
         </button>
-
-
-
+        <button type="button" class="btn-google" (click)="handleGoogleSignup()">
+          <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="">
+          Signup with Google
+        </button>
       </div>
+
       <div class="signup-footer">
-  <p>Already have an account? <a routerLink="/login">Login</a></p>
-</div>
+        <p>Already have an account? <a routerLink="/login">Login</a></p>
+      </div>
     </form>
 
   </div>
