@@ -1,11 +1,11 @@
 
 <div class="login-page">
-   
+
   <div class="login-card">
     <div class="logo-box">Benevo</div>
     <h2>Welcome Back</h2>
-    
-    <form (submit)="$event.preventDefault()"> 
+
+    <form (submit)="$event.preventDefault()">
       <div class="input-group">
         <label>Email Address</label>
         <input type="email" name="email" [(ngModel)]="email" class="custom-input" />
@@ -16,11 +16,18 @@
         <input type="password" name="password" [(ngModel)]="password" class="custom-input" />
       </div>
 
+      @if (errorMessage()) {
+        <div class="error-message">{{ errorMessage() }}</div>
+      }
+
       <div class="action-buttons">
-        <button type="button" class="btn-primary" (click)="handleLogin()">Login</button>
-        <button type="button" class="btn-google" (click)="handleGoogleLogin()">
-           <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt=""> 
-           Login with Google
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="handleLogin()"
+          [disabled]="isLoading()"
+        >
+          {{ isLoading() ? 'Logging in…' : 'Login' }}
         </button>
       </div>
     </form>
@@ -29,11 +36,10 @@
 
     <button class="btn-guest" (click)="handleGuestLogin()">Continue as Guest</button>
 
-    
     <div class="login-footer">
       <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
     </div>
-    
+
 
   </div>
 </div>

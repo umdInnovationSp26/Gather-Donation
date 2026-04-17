@@ -2,13 +2,13 @@
   <div class="home-main">
     <app-search-bar (search)="onSearch($event)" />
     <app-categories-grid [selectedCategory]="selectedCategory" (categoryChange)="onCategoryChange($event)" />
-    <app-donations-grid
-      [donations]="donations"
-      [selectedCategory]="selectedCategory"
-      (viewDetails)="onViewDetails($event)"
-    />
+    @if (isLoading) {
+      <p class="loading-state">Loading donations…</p>
+    } @else {
+      <app-donations-grid [donations]="donations" [isLoading]="isLoading" (viewDetails)="onViewDetails($event)" />
+    }
   </div>
-  <app-right-panel [balance]="balance" />
+  <app-right-panel />
 </div>
 
 <app-donation-detail-modal [donation]="selectedDonation" (close)="onCloseModal()" />

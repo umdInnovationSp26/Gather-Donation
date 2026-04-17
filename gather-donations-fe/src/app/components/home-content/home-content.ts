@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { SearchBar } from '../search-bar/search-bar';
 import { CategoriesGrid } from '../categories-grid/categories-grid';
 import { RightPanel } from '../right-panel/right-panel';
 import { DonationsGrid } from '../donations-grid/donations-grid';
 import { DonationDetailModal } from '../donation-detail-modal/donation-detail-modal';
-import { Donation, MOCK_DONATIONS } from '../../models/donation.model';
+import { DonationItem } from '../../models/donation.model';
+import { DonationsService } from '../../services/donations.service';
 
 @Component({
   selector: 'app-home-content',
@@ -13,26 +14,53 @@ import { Donation, MOCK_DONATIONS } from '../../models/donation.model';
   templateUrl: './home-content.html',
   styleUrl: './home-content.css',
 })
-export class HomeContent {
-  @Input() balance = 32;
+export class HomeContent implements OnInit {
+  private donationsService = inject(DonationsService);
 
-  selectedCategory = 'all';
-  donations: Donation[] = MOCK_DONATIONS;
-  selectedDonation: Donation | null = null;
+  selectedCategory: number | 'all' = 'all';
+  searchQuery = '';
+  donations: DonationItem[] = [];
+  selectedDonation: DonationItem | null = null;
+  isLoading = false;
+
+  ngOnInit(): void {
+    this.loadDonations();
+  }
 
   onSearch(query: string): void {
-    console.log('Search query:', query);
+    this.searchQuery = query;
+    this.loadDonations();
   }
 
-  onCategoryChange(categoryId: string): void {
+  onCategoryChange(categoryId: number | 'all'): void {
     this.selectedCategory = categoryId;
+    this.loadDonations();
   }
 
-  onViewDetails(donation: Donation): void {
+  onViewDetails(donation: DonationItem): void {
     this.selectedDonation = donation;
   }
 
   onCloseModal(): void {
     this.selectedDonation = null;
+  }
+
+  private loadDonations(): void {
+    this.isLoading = true;
+    this.donationsService
+      .getItems({
+        category: this.selectedCategory === 'all' ? undefined : this.selectedCategory,
+        search: this.searchQuery || undefined,
+        status: 'available',
+      })
+      .subscribe({
+        next: (items) => {
+          this.donations = items;
+          this.isLoading = false;
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
   }
 }

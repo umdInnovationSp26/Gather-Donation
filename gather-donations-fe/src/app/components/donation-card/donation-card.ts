@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Donation } from '../../models/donation.model';
+import { DonationItem } from '../../models/donation.model';
 
 @Component({
   selector: 'app-donation-card',
@@ -9,8 +9,8 @@ import { Donation } from '../../models/donation.model';
   styleUrl: './donation-card.css',
 })
 export class DonationCard {
-  @Input() donation!: Donation;
-  @Output() viewDetails = new EventEmitter<Donation>();
+  @Input() donation!: DonationItem;
+  @Output() viewDetails = new EventEmitter<DonationItem>();
 
   onViewDetails(): void {
     this.viewDetails.emit(this.donation);

@@ -1,11 +1,15 @@
 <article class="donation-card">
   <div class="card-image-wrapper">
-    <img class="card-image" [src]="donation.imageUrl" [alt]="donation.title" />
-    <span class="category-badge">{{ donation.categoryId }}</span>
+    <img
+      class="card-image"
+      [src]="donation.image || 'https://picsum.photos/seed/' + donation.id + '/400/300'"
+      [alt]="donation.title"
+    />
+    <span class="category-badge">{{ donation.category_name }}</span>
   </div>
   <div class="card-body">
     <h3 class="card-title">{{ donation.title }}</h3>
-    <p class="card-donor">Posted by {{ donation.donor }}</p>
+    <p class="card-donor">Posted by {{ donation.donor_name }}</p>
     <button class="btn-details" (click)="onViewDetails()">View Details</button>
   </div>
 </article>

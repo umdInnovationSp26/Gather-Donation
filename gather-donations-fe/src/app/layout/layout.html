@@ -5,9 +5,8 @@
       <div class="logo">Benevo</div>
     </div>
     <div class="user-info">
-      <span class="username">Jane Doe</span>
-      <span class="token-badge"> 32 <span class="token-icon">$</span> </span>
-      <img class="avatar" src="profileimg.png" alt="avatar" routerLink="/profile" />
+      <span class="username">{{ displayName() }}</span>
+      <img class="avatar" [src]="avatarUrl()" alt="avatar" routerLink="/profile" />
     </div>
   </header>
 
@@ -22,7 +21,7 @@
       <div class="sidebar-bottom">
         <a routerLink="/profile" routerLinkActive="active"> Profile</a>
         <a routerLink="/settings" routerLinkActive="active"> Settings </a>
-        <a href="#"> Log out </a>
+        <a href="#" (click)="$event.preventDefault(); logout()"> Log out </a>
       </div>
     </nav>
 
