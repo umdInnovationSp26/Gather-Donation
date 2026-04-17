@@ -7,12 +7,14 @@
       <div class="center-content">
         <h1 class="user-name">Jane Doe</h1>
         <p>jane.doe@example.com</p> 
-        <span class="token-badge"> 32 <span class="token-icon">$</span> </span>
       </div>
     </div>
-    <div class="button-section">
-      <button class="post-button" routerLink="/post-donations">Post</button>
-      <button class="edit-profile-button">Edit Profile</button>
+    <div class="right-section">
+      <div class="button-section">
+        <button class="post-button" routerLink="/post-donations">Post</button>
+        <button class="edit-profile-button">Edit Profile</button>
+      </div>
+      <app-balance-panel [balance]="balance" />
     </div>
   </div>
 </div>
