@@ -71,7 +71,7 @@
   position: absolute;
   bottom: 12px;
   left: 14px;
-  background: var(--persian-indigo);
+  background: var(--regal-navy);
   color: #fff;
   font-size: 0.7rem;
   font-weight: 600;
@@ -129,6 +129,8 @@
 
 .btn-request:hover {
   opacity: 0.88;
+  background: var(--lime-cream);
+  color: #2f6124;
 }
 
 .btn-cancel {
@@ -146,5 +148,6 @@
 }
 
 .btn-cancel:hover {
-  background: #f3e8ff;
+  background: var(--light-teal);
+  color: var(--white-smoke);
 }

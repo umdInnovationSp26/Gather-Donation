@@ -4,6 +4,7 @@
   padding: 32px;
   min-height: 100%;
   background-color: var(--bg-content);
+  font-family: 'Inter', sans-serif;
 }
 
 .home-main {

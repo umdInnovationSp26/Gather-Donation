@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
-  background-color: var(--persian-indigo);
+  background-color: var(--light-teal);
   border: none;
   border-radius: 16px;
   padding: 24px 16px 20px;
@@ -18,14 +18,14 @@
 }
 
 .category-card:hover {
-  background-color: var(--indigo);
+  background-color: var(--tropical-teal);
   transform: translateY(-2px);
 }
 
 .category-card.selected {
-  background-color: var(--princeton-orange);
+  background-color: var(--lime-cream);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 145, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(43, 99, 31, 0.45);
 }
 
 .category-icon-slot {
