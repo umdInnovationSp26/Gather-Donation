@@ -1,93 +1,97 @@
-export interface Donation {
-  id: string;
-  title: string;
-  imageUrl: string;
-  categoryId: string;
-  description: string;
-  donor: string;
-  postedDate: string;
+// ── API response shapes (mirror Django serializers) ──────────────────────────
+
+export interface User {
+  id: number;
+  email: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  location: string;
+  bio: string;
+  profile_picture: string | null;
+  created_at: string;
 }
 
-export const MOCK_DONATIONS: Donation[] = [
-  {
-    id: '1',
-    title: 'Leather Sofa',
-    imageUrl: 'https://picsum.photos/seed/sofa/400/300',
-    categoryId: 'furniture',
-    description: 'Gently used 3-seater leather sofa in great condition. No tears or stains. Pick-up only.',
-    donor: 'Maria S.',
-    postedDate: '2026-04-05',
-  },
-  {
-    id: '2',
-    title: 'Winter Jacket (M)',
-    imageUrl: 'https://picsum.photos/seed/jacket/400/300',
-    categoryId: 'clothing',
-    description: 'Warm winter jacket, size medium. Worn only one season. Perfect for cold weather.',
-    donor: 'James T.',
-    postedDate: '2026-04-06',
-  },
-  {
-    id: '3',
-    title: 'KitchenAid Stand Mixer',
-    imageUrl: 'https://picsum.photos/seed/mixer/400/300',
-    categoryId: 'kitchen',
-    description: 'KitchenAid stand mixer, 5 qt. All attachments included. Works perfectly.',
-    donor: 'Priya R.',
-    postedDate: '2026-04-04',
-  },
-  {
-    id: '4',
-    title: 'All-Purpose Cleaner Set',
-    imageUrl: 'https://picsum.photos/seed/cleaner/400/300',
-    categoryId: 'cleaning',
-    description: 'Bundle of unopened cleaning supplies — spray bottles, wipes, and detergent.',
-    donor: 'Carlos M.',
-    postedDate: '2026-04-07',
-  },
-  {
-    id: '5',
-    title: 'Wooden Bookshelf',
-    imageUrl: 'https://picsum.photos/seed/bookshelf/400/300',
-    categoryId: 'furniture',
-    description: 'Solid wood 5-shelf bookcase. Minor scratches on the side, otherwise solid.',
-    donor: 'Anna K.',
-    postedDate: '2026-04-03',
-  },
-  {
-    id: '6',
-    title: 'Kids\' Clothes Bundle',
-    imageUrl: 'https://picsum.photos/seed/kidclothes/400/300',
-    categoryId: 'clothing',
-    description: 'Assorted kids clothes, ages 4–6. Mix of shirts, pants, and light jackets.',
-    donor: 'Lin W.',
-    postedDate: '2026-04-06',
-  },
-  {
-    id: '7',
-    title: 'Cast Iron Skillet',
-    imageUrl: 'https://picsum.photos/seed/skillet/400/300',
-    categoryId: 'kitchen',
-    description: 'Well-seasoned 12-inch cast iron skillet. Ready to use, just needs a rinse.',
-    donor: 'Robert H.',
-    postedDate: '2026-04-05',
-  },
-  {
-    id: '8',
-    title: 'Vacuum Cleaner',
-    imageUrl: 'https://picsum.photos/seed/vacuum/400/300',
-    categoryId: 'cleaning',
-    description: 'Dyson V7 cordless vacuum. Works great. Includes all heads and charger.',
-    donor: 'Sofia B.',
-    postedDate: '2026-04-04',
-  },
-  {
-    id: '9',
-    title: 'Coffee Table',
-    imageUrl: 'https://picsum.photos/seed/coffeetable/400/300',
-    categoryId: 'furniture',
-    description: 'Modern walnut coffee table, 48"x24". Light use, no damage.',
-    donor: 'David N.',
-    postedDate: '2026-04-07',
-  },
-];
+export interface Category {
+  id: number;
+  name: string;
+  icon: string;
+}
+
+export type DonationCondition = 'new' | 'like_new' | 'good' | 'fair' | 'poor';
+export type DonationStatus = 'available' | 'reserved' | 'donated' | 'cancelled';
+export type RequestUrgency = 'low' | 'medium' | 'high' | 'critical';
+export type RequestStatus = 'open' | 'fulfilled' | 'cancelled';
+export type MatchStatus = 'pending' | 'accepted' | 'completed' | 'rejected';
+
+export interface DonationItem {
+  id: number;
+  donor: number;
+  donor_name: string;
+  title: string;
+  description: string;
+  category: number | null;
+  category_name: string;
+  condition: DonationCondition;
+  location: string;
+  status: DonationStatus;
+  image: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DonationRequest {
+  id: number;
+  requester: number;
+  requester_name: string;
+  title: string;
+  description: string;
+  category: number | null;
+  category_name: string;
+  urgency: RequestUrgency;
+  location: string;
+  status: RequestStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface DonationMatch {
+  id: number;
+  donation_item: number;
+  donation_request: number;
+  status: MatchStatus;
+  matched_by: number;
+  notes: string;
+  created_at: string;
+  updated_at: string;
+}
+
+// ── Auth payloads ─────────────────────────────────────────────────────────────
+
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+export interface RegisterPayload {
+  email: string;
+  username: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  password2: string;
+  phone?: string;
+  location?: string;
+}
+
+export interface AuthTokens {
+  access: string;
+  refresh: string;
+  user: User;
+}
+
+// ── Legacy mock alias kept so existing components don't break immediately ─────
+// Components that reference the old `Donation` type will be migrated to
+// `DonationItem` incrementally.
+export type Donation = DonationItem;

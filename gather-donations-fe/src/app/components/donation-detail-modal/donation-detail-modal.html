@@ -4,13 +4,21 @@
       <button class="modal-close" (click)="onClose()" aria-label="Close">&#10005;</button>
 
       <div class="modal-image-wrapper">
-        <img class="modal-image" [src]="donation.imageUrl" [alt]="donation.title" />
-        <span class="category-badge">{{ donation.categoryId }}</span>
+        <img
+          class="modal-image"
+          [src]="donation.image || 'https://picsum.photos/seed/' + donation.id + '/800/400'"
+          [alt]="donation.title"
+        />
+        <span class="category-badge">{{ donation.category_name }}</span>
       </div>
 
       <div class="modal-body">
         <h2 class="modal-title">{{ donation.title }}</h2>
-        <p class="modal-donor">Posted by <strong>{{ donation.donor }}</strong> &middot; {{ donation.postedDate }}</p>
+        <p class="modal-donor">
+          Posted by <strong>{{ donation.donor_name }}</strong> &middot;
+          {{ donation.created_at | date: 'mediumDate' }}
+        </p>
+        <p class="modal-meta">Condition: {{ donation.condition }} &middot; {{ donation.location }}</p>
         <p class="modal-description">{{ donation.description }}</p>
 
         <div class="modal-actions">

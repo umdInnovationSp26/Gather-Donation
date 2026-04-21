@@ -1,18 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, inject } from '@angular/core';
 import { CategoryCard } from '../category-card/category-card';
+import { DonationsService } from '../../services/donations.service';
 
-export interface Category {
-  id: string;
+interface UiCategory {
+  id: number | 'all';
   label: string;
 }
 
-const DEFAULT_CATEGORIES: Category[] = [
-  { id: 'all', label: 'View All' },
-  { id: 'cleaning', label: 'Cleaning' },
-  { id: 'furniture', label: 'Furniture' },
-  { id: 'kitchen', label: 'Kitchen' },
-  { id: 'clothing', label: 'Clothing' },
-];
+const ALL_CATEGORY: UiCategory = { id: 'all', label: 'View All' };
 
 @Component({
   selector: 'app-categories-grid',
@@ -21,12 +16,26 @@ const DEFAULT_CATEGORIES: Category[] = [
   templateUrl: './categories-grid.html',
   styleUrl: './categories-grid.css',
 })
-export class CategoriesGrid {
-  @Input() categories: Category[] = DEFAULT_CATEGORIES;
-  @Input() selectedCategory = 'all';
-  @Output() categoryChange = new EventEmitter<string>();
+export class CategoriesGrid implements OnInit {
+  private donationsService = inject(DonationsService);
 
-  select(id: string): void {
+  @Input() selectedCategory: number | 'all' = 'all';
+  @Output() categoryChange = new EventEmitter<number | 'all'>();
+
+  categories: UiCategory[] = [ALL_CATEGORY];
+
+  ngOnInit(): void {
+    this.donationsService.getCategories().subscribe({
+      next: (cats) => {
+        this.categories = [
+          ALL_CATEGORY,
+          ...cats.map((c) => ({ id: c.id as number | 'all', label: c.name })),
+        ];
+      },
+    });
+  }
+
+  select(id: number | 'all'): void {
     this.categoryChange.emit(id);
   }
 }
