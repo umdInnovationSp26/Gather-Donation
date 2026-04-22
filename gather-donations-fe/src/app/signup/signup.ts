@@ -32,25 +32,27 @@ export class SignupComponent {
     }
 
     this.isLoading = true;
-    this.authService.register({
-      email: this.email,
-      username: this.username,
-      first_name: this.firstName,
-      last_name: this.lastName,
-      password: this.password,
-      password2: this.confirmPassword,
-    }).subscribe({
-      next: () => this.router.navigate(['/login']),
-      error: (err) => {
-        this.isLoading = false;
-        const data = err.error;
-        if (data && typeof data === 'object') {
-          this.errorMessage = Object.values(data).flat().join(' ');
-        } else {
-          this.errorMessage = 'Registration failed. Please try again.';
-        }
-      },
-    });
+    this.authService
+      .register({
+        email: this.email,
+        username: this.username,
+        first_name: this.firstName,
+        last_name: this.lastName,
+        password: this.password,
+        password2: this.confirmPassword,
+      })
+      .subscribe({
+        next: () => this.router.navigate(['/login']),
+        error: err => {
+          this.isLoading = false;
+          const data = err.error;
+          if (data && typeof data === 'object') {
+            this.errorMessage = Object.values(data).flat().join(' ');
+          } else {
+            this.errorMessage = 'Registration failed. Please try again.';
+          }
+        },
+      });
   }
 
   handleGoogleSignup() {

@@ -3,7 +3,6 @@ import { LoginComponent } from './login/login';
 import { Layout } from './layout/layout';
 import { authGuard } from './auth-guard';
 
-
 import { Home } from './pages/home/home';
 import { PostDonations } from './pages/post-donations/post-donations';
 import { RequestDonations } from './pages/request-donations/request-donations';
@@ -27,7 +26,7 @@ export const routes: Routes = [
       { path: 'volunteer', component: Volunteer },
       { path: 'active-requests', component: ActiveRequests },
       { path: 'profile', component: Profile },
-    ]
+    ],
   },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' },
 ];

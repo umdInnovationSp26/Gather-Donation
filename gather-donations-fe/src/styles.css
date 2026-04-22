@@ -19,12 +19,12 @@ body {
 
   /* ---- New Colors -------- */
   --white: #ffffff;
-  --regal-navy: #053D76;
-  --tropical-teal: #56A3A6;
-  --light-teal: #AED4D5;
-  --pastel-pink: #FFC2CA;
-  --lime-cream: #CAE58A;
-  --white-smoke: #F5F5F5;
+  --regal-navy: #053d76;
+  --tropical-teal: #56a3a6;
+  --light-teal: #aed4d5;
+  --pastel-pink: #ffc2ca;
+  --lime-cream: #cae58a;
+  --white-smoke: #f5f5f5;
 
   /* ── Backgrounds ───────────────────────────────── */
   --bg-page: var(--white); /* full-page background (login, etc.) */

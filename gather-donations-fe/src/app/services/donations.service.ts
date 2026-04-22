@@ -13,11 +13,7 @@ export class DonationsService {
     return this.http.get<Category[]>(`${this.base}/categories/`);
   }
 
-  getItems(filters?: {
-    category?: number;
-    status?: string;
-    search?: string;
-  }): Observable<DonationItem[]> {
+  getItems(filters?: { category?: number; status?: string; search?: string }): Observable<DonationItem[]> {
     let params = new HttpParams();
     if (filters?.category) params = params.set('category', filters.category);
     if (filters?.status) params = params.set('status', filters.status);

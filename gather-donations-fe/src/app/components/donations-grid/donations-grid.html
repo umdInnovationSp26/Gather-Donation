@@ -6,38 +6,21 @@
   } @else {
     <div class="donations-grid">
       @for (donation of paginated; track donation.id) {
-        <app-donation-card
-          [donation]="donation"
-          (viewDetails)="onViewDetails($event)"
-        />
+        <app-donation-card [donation]="donation" (viewDetails)="onViewDetails($event)" />
       }
     </div>
 
     @if (totalPages > 1) {
       <div class="pagination">
-        <button
-          class="page-btn"
-          [disabled]="currentPage === 1"
-          (click)="goToPage(currentPage - 1)"
-        >
-          &#8592;
-        </button>
+        <button class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">&#8592;</button>
 
         @for (page of pages; track page) {
-          <button
-            class="page-btn"
-            [class.active]="page === currentPage"
-            (click)="goToPage(page)"
-          >
+          <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">
             {{ page }}
           </button>
         }
 
-        <button
-          class="page-btn"
-          [disabled]="currentPage === totalPages"
-          (click)="goToPage(currentPage + 1)"
-        >
+        <button class="page-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">
           &#8594;
         </button>
       </div>

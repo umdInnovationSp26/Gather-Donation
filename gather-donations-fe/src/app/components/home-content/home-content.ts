@@ -54,7 +54,7 @@ export class HomeContent implements OnInit {
         status: 'available',
       })
       .subscribe({
-        next: (items) => {
+        next: items => {
           this.donations = items;
           this.isLoading = false;
         },

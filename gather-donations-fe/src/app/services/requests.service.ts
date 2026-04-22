@@ -31,10 +31,7 @@ export class RequestsService {
     return this.http.post<DonationRequest>(`${this.base}/requests/`, data);
   }
 
-  updateRequest(
-    id: number,
-    data: Partial<DonationRequest>,
-  ): Observable<DonationRequest> {
+  updateRequest(id: number, data: Partial<DonationRequest>): Observable<DonationRequest> {
     return this.http.patch<DonationRequest>(`${this.base}/requests/${id}/`, data);
   }
 

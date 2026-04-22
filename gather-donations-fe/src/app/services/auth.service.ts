@@ -4,12 +4,7 @@ import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import {
-  AuthTokens,
-  LoginPayload,
-  RegisterPayload,
-  User,
-} from '../models/donation.model';
+import { AuthTokens, LoginPayload, RegisterPayload, User } from '../models/donation.model';
 
 const ACCESS_KEY = 'access_token';
 const REFRESH_KEY = 'refresh_token';
@@ -23,9 +18,7 @@ export class AuthService {
   currentUser = signal<User | null>(this.loadUser());
 
   login(payload: LoginPayload): Observable<AuthTokens> {
-    return this.http.post<AuthTokens>(`${this.base}/login/`, payload).pipe(
-      tap((res) => this.storeSession(res)),
-    );
+    return this.http.post<AuthTokens>(`${this.base}/login/`, payload).pipe(tap(res => this.storeSession(res)));
   }
 
   register(payload: RegisterPayload): Observable<User> {
@@ -36,7 +29,7 @@ export class AuthService {
     const refresh = localStorage.getItem(REFRESH_KEY);
     return this.http
       .post<{ access: string }>(`${this.base}/token/refresh/`, { refresh })
-      .pipe(tap((res) => localStorage.setItem(ACCESS_KEY, res.access)));
+      .pipe(tap(res => localStorage.setItem(ACCESS_KEY, res.access)));
   }
 
   logout(): void {

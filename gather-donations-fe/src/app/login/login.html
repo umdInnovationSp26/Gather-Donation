@@ -1,6 +1,4 @@
-
 <div class="login-page">
-
   <div class="login-card">
     <div class="logo-box">Benevo</div>
     <h2>Welcome Back</h2>
@@ -21,17 +19,12 @@
       }
 
       <div class="action-buttons">
-        <button
-          type="button"
-          class="btn-primary"
-          (click)="handleLogin()"
-          [disabled]="isLoading()"
-        >
+        <button type="button" class="btn-primary" (click)="handleLogin()" [disabled]="isLoading()">
           {{ isLoading() ? 'Logging in…' : 'Login' }}
         </button>
       </div>
     </form>
-    <div class="forgot-pass"> Forgot Password? </div>
+    <div class="forgot-pass">Forgot Password?</div>
     <div class="divider"><span>or</span></div>
 
     <button class="btn-guest" (click)="handleGuestLogin()">Continue as Guest</button>
@@ -39,7 +32,5 @@
     <div class="login-footer">
       <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
     </div>
-
-
   </div>
 </div>

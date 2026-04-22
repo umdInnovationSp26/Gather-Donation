@@ -26,11 +26,8 @@ export class CategoriesGrid implements OnInit {
 
   ngOnInit(): void {
     this.donationsService.getCategories().subscribe({
-      next: (cats) => {
-        this.categories = [
-          ALL_CATEGORY,
-          ...cats.map((c) => ({ id: c.id as number | 'all', label: c.name })),
-        ];
+      next: cats => {
+        this.categories = [ALL_CATEGORY, ...cats.map(c => ({ id: c.id as number | 'all', label: c.name }))];
       },
     });
   }

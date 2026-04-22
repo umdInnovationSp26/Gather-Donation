@@ -41,7 +41,9 @@
   font-weight: 600;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
 .page-btn:hover:not(:disabled) {
