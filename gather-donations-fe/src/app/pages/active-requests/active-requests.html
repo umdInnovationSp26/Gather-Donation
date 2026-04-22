@@ -1,1 +1,42 @@
-<p>active-requests works!</p>
+<section class="requests-section">
+  <h2 class="requests-title">Active Requests</h2>
+
+  @if (isLoading) {
+    <p class="loading-state">Loading requests…</p>
+  } @else if (error) {
+    <p class="empty-state">{{ error }}</p>
+  } @else if (requests.length === 0) {
+    <p class="empty-state">No active requests at the moment.</p>
+  } @else {
+    <div class="requests-grid">
+      @for (req of paginated; track req.id) {
+        <article class="request-card">
+          <div class="card-header">
+            <span class="category-badge">{{ req.category_name }}</span>
+            <span class="urgency-badge urgency-{{ req.urgency }}">
+              {{ req.urgency | titlecase }}
+            </span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ req.title }}</h3>
+            <p class="card-description">{{ req.description }}</p>
+            <div class="card-footer">
+              <span class="card-meta">📍 {{ req.location }}</span>
+              <span class="card-meta">by {{ req.requester_name }}</span>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (totalPages > 1) {
+      <div class="pagination">
+        <button class="page-btn" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">&#8592;</button>
+        @for (page of pages; track page) {
+          <button class="page-btn" [class.active]="page === currentPage" (click)="goToPage(page)">{{ page }}</button>
+        }
+        <button class="page-btn" [disabled]="currentPage === totalPages" (click)="goToPage(currentPage + 1)">&#8594;</button>
+      </div>
+    }
+  }
+</section>

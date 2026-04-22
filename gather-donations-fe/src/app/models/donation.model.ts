@@ -11,6 +11,7 @@ export interface User {
   bio: string;
   profile_picture: string | null;
   created_at: string;
+  token_balance: number;
 }
 
 export interface Category {
