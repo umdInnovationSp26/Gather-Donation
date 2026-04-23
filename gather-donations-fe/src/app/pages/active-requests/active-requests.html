@@ -1,153 +1,192 @@
-import { Component, inject, OnInit, signal, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { DonationsService } from '../../services/donations.service';
-import { RequestsService } from '../../services/requests.service';
-import { AuthService } from '../../services/auth.service';
-import { DonationItem, DonationRequest } from '../../models/donation.model';
+<div class="active-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="header-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="16" y1="13" x2="8" y2="13"/>
+        <line x1="16" y1="17" x2="8" y2="17"/>
+        <polyline points="10 9 9 9 8 9"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1 class="page-title">Active Listings</h1>
+      <p class="page-subtitle">Track your posted donations and active requests</p>
+    </div>
+  </div>
 
-type UiStatus = 'active' | 'pending' | 'fulfilled' | 'expired';
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <span class="stat-number">{{ stats().activeDonations + stats().activeRequests }}</span>
+      <span class="stat-label">Active</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <span class="stat-number">{{ stats().pendingDonations + stats().pendingRequests }}</span>
+      <span class="stat-label">Pending</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <span class="stat-number">{{ stats().fulfilledDonations + stats().fulfilledRequests }}</span>
+      <span class="stat-label">Fulfilled</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-card">
+      <span class="stat-number stat-tokens">+{{ stats().fulfilledDonations * 5 }}</span>
+      <span class="stat-label">Tokens Earned</span>
+    </div>
+  </div>
 
-interface ActiveDonation {
-  id: number;
-  title: string;
-  categoryName: string;
-  imageUrl: string | null;
-  status: UiStatus;
-  postedDate: string;
-  tokenValue: number;
-}
+  <!-- Tabs -->
+  <div class="tabs-bar">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'donations'"
+      (click)="activeTab = 'donations'"
+    >
+      My Donations
+      <span class="tab-count">{{ myDonations().length }}</span>
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'requests'"
+      (click)="activeTab = 'requests'"
+    >
+      My Requests
+      <span class="tab-count">{{ myRequests().length }}</span>
+    </button>
+  </div>
 
-interface ActiveRequest {
-  id: number;
-  title: string;
-  categoryName: string;
-  urgency: string;
-  status: UiStatus;
-  postedDate: string;
-  tokenValue: number;
-}
-
-@Component({
-  selector: 'app-active-requests',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './active-requests.html',
-  styleUrl: './active-requests.css',
-})
-export class ActiveRequests implements OnInit {
-  private donationsService = inject(DonationsService);
-  private requestsService = inject(RequestsService);
-  private authService = inject(AuthService);
-
-  activeTab: 'donations' | 'requests' = 'donations';
-  isLoading = signal(true);
-
-  myDonations = signal<ActiveDonation[]>([]);
-  myRequests = signal<ActiveRequest[]>([]);
-
-  stats = computed(() => {
-    const d = this.myDonations();
-    const r = this.myRequests();
-    return {
-      activeDonations: d.filter((i) => i.status === 'active').length,
-      pendingDonations: d.filter((i) => i.status === 'pending').length,
-      fulfilledDonations: d.filter((i) => i.status === 'fulfilled').length,
-      activeRequests: r.filter((i) => i.status === 'active').length,
-      pendingRequests: r.filter((i) => i.status === 'pending').length,
-      fulfilledRequests: r.filter((i) => i.status === 'fulfilled').length,
-    };
-  });
-
-  private loadCount = 0;
-
-  ngOnInit(): void {
-    const userId = this.authService.currentUser()?.id;
-
-    this.donationsService.getItems().subscribe({
-      next: (items) => {
-        const mine = userId ? items.filter((i) => i.donor === userId) : items;
-        this.myDonations.set(mine.map(this.toDonationUi));
-        this.onLoaded();
-      },
-      error: () => this.onLoaded(),
-    });
-
-    this.requestsService.getRequests().subscribe({
-      next: (reqs) => {
-        const mine = userId ? reqs.filter((r) => r.requester === userId) : reqs;
-        this.myRequests.set(mine.map(this.toRequestUi));
-        this.onLoaded();
-      },
-      error: () => this.onLoaded(),
-    });
+  <!-- Loading State -->
+  @if (isLoading()) {
+    <div class="loading-state">
+      <div class="loading-spinner"></div>
+      <p>Loading your listings…</p>
+    </div>
   }
 
-  confirmPickup(id: number): void {
-    this.donationsService.updateItem(id, { status: 'donated' }).subscribe({
-      next: (updated) => {
-        this.myDonations.update((list) =>
-          list.map((d) => (d.id === id ? { ...d, status: this.mapDonationStatus(updated.status) } : d))
-        );
-      },
-    });
+  <!-- My Donations Tab -->
+  @if (!isLoading() && activeTab === 'donations') {
+    <div class="listings-grid">
+      @for (item of myDonations(); track item.id) {
+        <div class="listing-card" [attr.data-status]="item.status">
+          <div class="card-image">
+            @if (item.imageUrl) {
+              <img [src]="item.imageUrl" [alt]="item.title" />
+            } @else {
+              <div class="card-image-placeholder">
+                {{ item.categoryName.slice(0, 2).toUpperCase() }}
+              </div>
+            }
+            <span class="status-badge" [attr.data-status]="item.status">{{ item.status | titlecase }}</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="category-chip">{{ item.categoryName }}</span>
+              <span class="post-date">{{ item.postedDate }}</span>
+            </div>
+            <h3 class="card-title">{{ item.title }}</h3>
+
+            @if (item.status === 'fulfilled') {
+              <div class="fulfilled-row">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Successfully donated · +{{ item.tokenValue }} tokens earned</span>
+              </div>
+            }
+
+            <div class="card-actions">
+              @if (item.status === 'active') {
+                <button class="action-btn btn-primary" (click)="confirmPickup(item.id)">Confirm Pickup</button>
+                <button class="action-btn btn-outline" (click)="cancelDonation(item.id)">Cancel</button>
+              }
+              @if (item.status === 'pending') {
+                <button class="action-btn btn-primary" (click)="confirmPickup(item.id)">Confirm Pickup</button>
+                <button class="action-btn btn-outline" (click)="cancelDonation(item.id)">Cancel</button>
+              }
+              @if (item.status === 'fulfilled') {
+                <button class="action-btn btn-ghost">View History</button>
+              }
+              @if (item.status === 'expired') {
+                <button class="action-btn btn-ghost">Repost</button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (myDonations().length === 0) {
+        <div class="empty-state">
+          <p>You haven't posted any donations yet.</p>
+        </div>
+      }
+
+      <!-- Add listing card -->
+      <div class="add-listing-card" routerLink="/post-donations">
+        <div class="add-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <p class="add-label">Post a Donation</p>
+      </div>
+    </div>
   }
 
-  cancelDonation(id: number): void {
-    this.donationsService.deleteItem(id).subscribe({
-      next: () => this.myDonations.update((list) => list.filter((d) => d.id !== id)),
-    });
+  <!-- My Requests Tab -->
+  @if (!isLoading() && activeTab === 'requests') {
+    <div class="listings-list">
+      @for (item of myRequests(); track item.id) {
+        <div class="request-row" [attr.data-status]="item.status">
+          <div class="request-left">
+            <div class="request-category-icon">
+              {{ item.categoryName.slice(0, 2).toUpperCase() }}
+            </div>
+            <div class="request-info">
+              <div class="request-top">
+                <h3 class="request-title">{{ item.title }}</h3>
+                <span class="status-badge" [attr.data-status]="item.status">{{ item.status | titlecase }}</span>
+              </div>
+              <div class="request-details">
+                <span class="category-chip">{{ item.categoryName }}</span>
+                <span class="urgency-chip" [attr.data-urgency]="item.urgency">{{ item.urgency | titlecase }} urgency</span>
+                <span class="post-date">Posted {{ item.postedDate }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="request-right">
+            @if (item.status === 'fulfilled') {
+              <div class="fulfilled-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Fulfilled
+              </div>
+            } @else {
+              <div class="token-cost">−{{ item.tokenValue }} $</div>
+            }
+            <div class="request-actions">
+              @if (item.status !== 'fulfilled' && item.status !== 'expired') {
+                <button class="action-btn btn-ghost-sm" (click)="cancelRequest(item.id)">Cancel</button>
+              } @else {
+                <button class="action-btn btn-ghost-sm">View</button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (myRequests().length === 0) {
+        <div class="empty-state">
+          <p>You haven't made any requests yet.</p>
+        </div>
+      }
+
+      <!-- Add request row -->
+      <div class="add-request-row" routerLink="/request-donations">
+        <div class="add-icon-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <span>Make a New Request</span>
+      </div>
+    </div>
   }
-
-  cancelRequest(id: number): void {
-    this.requestsService.updateRequest(id, { status: 'cancelled' }).subscribe({
-      next: (updated) => {
-        this.myRequests.update((list) =>
-          list.map((r) => (r.id === id ? { ...r, status: this.mapRequestStatus(updated.status) } : r))
-        );
-      },
-    });
-  }
-
-  private onLoaded(): void {
-    this.loadCount++;
-    if (this.loadCount >= 2) this.isLoading.set(false);
-  }
-
-  private toDonationUi = (item: DonationItem): ActiveDonation => ({
-    id: item.id,
-    title: item.title,
-    categoryName: item.category_name,
-    imageUrl: item.image,
-    status: this.mapDonationStatus(item.status),
-    postedDate: item.created_at.split('T')[0],
-    tokenValue: 5,
-  });
-
-  private toRequestUi = (req: DonationRequest): ActiveRequest => ({
-    id: req.id,
-    title: req.title,
-    categoryName: req.category_name,
-    urgency: req.urgency,
-    status: this.mapRequestStatus(req.status),
-    postedDate: req.created_at.split('T')[0],
-    tokenValue: 3,
-  });
-
-  private mapDonationStatus(status: string): UiStatus {
-    switch (status) {
-      case 'available': return 'active';
-      case 'reserved':  return 'pending';
-      case 'donated':   return 'fulfilled';
-      default:          return 'expired';
-    }
-  }
-
-  private mapRequestStatus(status: string): UiStatus {
-    switch (status) {
-      case 'open':      return 'active';
-      case 'fulfilled': return 'fulfilled';
-      default:          return 'expired';
-    }
-  }
-}
+</div>
