@@ -2,11 +2,12 @@
   <div class="profile-header">
     <div class="left-section">
       <div class="img-container">
-        <img class="profile-picture" src="profileimg.png" />
+        <img class="profile-picture" [src]="avatarUrl()" alt="avatar"/>
       </div>
       <div class="center-content">
-        <h1 class="user-name">Jane Doe</h1>
-        <p>jane.doe@example.com</p> 
+        <h1 class="user-name">{{ displayName() }}</h1>
+        <p>{{ displayUsername() }}</p>
+        <p>{{ displayEmail() }}</p> 
       </div>
     </div>
     <div class="right-section">
@@ -17,4 +18,5 @@
       <app-balance-panel [balance]="balance" />
     </div>
   </div>
+
 </div>
