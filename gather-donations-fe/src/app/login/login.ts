@@ -38,6 +38,7 @@ export class LoginComponent {
   }
 
   handleGuestLogin(): void {
+    this.auth.loginAsGuest();
     this.router.navigate(['/home']);
   }
 }

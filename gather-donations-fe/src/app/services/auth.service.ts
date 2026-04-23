@@ -16,6 +16,11 @@ export class AuthService {
   private base = `${environment.apiUrl}/auth`;
 
   currentUser = signal<User | null>(this.loadUser());
+  isGuest = signal<boolean>(false);
+
+  loginAsGuest(): void {
+    this.isGuest.set(true);
+  }
 
   login(payload: LoginPayload): Observable<AuthTokens> {
     return this.http.post<AuthTokens>(`${this.base}/login/`, payload).pipe(tap(res => this.storeSession(res)));
@@ -37,6 +42,7 @@ export class AuthService {
     localStorage.removeItem(REFRESH_KEY);
     localStorage.removeItem('current_user');
     this.currentUser.set(null);
+    this.isGuest.set(false);
     this.router.navigate(['/login']);
   }
 
