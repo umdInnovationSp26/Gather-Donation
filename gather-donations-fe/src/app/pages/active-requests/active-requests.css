@@ -1,153 +1,611 @@
-.requests-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+/* ─── Page Layout ────────────────────────────────────────────── */
+.active-page {
   font-family: 'Inter', sans-serif;
+  min-height: 100%;
+  background: var(--white-smoke);
+  padding-bottom: 48px;
 }
 
-.requests-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-heading);
-}
-
-.loading-state,
-.empty-state {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  padding: 24px 0;
-}
-
-/* Grid — same column sizing as donations-grid */
-.requests-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-/* Card — mirrors donation-card visual style */
-.request-card {
+/* ─── Loading ────────────────────────────────────────────────── */
+.loading-state {
   display: flex;
   flex-direction: column;
-  background: #fff;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  align-items: center;
+  gap: 12px;
+  padding: 64px 36px;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
-.request-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--light-teal);
+  border-top-color: var(--tropical-teal);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
 }
 
-.card-header {
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Empty State ────────────────────────────────────────────── */
+.empty-state {
+  grid-column: 1 / -1;
+  padding: 32px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ─── Image Placeholder ──────────────────────────────────────── */
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--input-bg);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 14px 0;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--regal-navy);
+  letter-spacing: 0.05em;
 }
 
-/* Category badge — matches donation-card's .category-badge */
-.category-badge {
-  background: var(--regal-navy);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: capitalize;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
+/* ─── Header ─────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 36px 20px;
+  background: var(--white);
+  border-bottom: 1px solid #eef0f2;
 }
 
-/* Urgency badge — teal palette from design system */
-.urgency-badge {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
+.header-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--lime-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2f6124;
+  flex-shrink: 0;
 }
 
-.urgency-low      { background: var(--lime-cream);  color: #2f6124; }
-.urgency-medium   { background: var(--light-teal);  color: var(--regal-navy); }
-.urgency-high     { background: var(--pastel-pink); color: #7a1a2e; }
-.urgency-critical { background: #ffc880;             color: #7a3800; }
-
-.card-body {
+.header-text {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 12px 14px 16px;
+  gap: 2px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--regal-navy);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ─── Stats Bar ──────────────────────────────────────────────── */
+.stats-bar {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-bottom: 1px solid #eef0f2;
+  padding: 0 36px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 32px;
+  gap: 2px;
+}
+
+.stat-number {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--regal-navy);
+  line-height: 1;
+}
+
+.stat-number.stat-tokens {
+  color: #2f6124;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: #eef0f2;
+}
+
+/* ─── Tabs ───────────────────────────────────────────────────── */
+.tabs-bar {
+  display: flex;
+  gap: 4px;
+  padding: 20px 36px 0;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 3px solid transparent;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--regal-navy);
+  background: var(--input-bg);
+}
+
+.tab-btn.active {
+  color: var(--regal-navy);
+  border-bottom-color: var(--tropical-teal);
+  background: var(--input-bg);
+}
+
+.tab-count {
+  background: var(--white-smoke);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.tab-btn.active .tab-count {
+  background: var(--lime-cream);
+  color: #2f6124;
+}
+
+/* ─── Donations Grid ─────────────────────────────────────────── */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 24px 36px;
+}
+
+/* ─── Listing Card ───────────────────────────────────────────── */
+.listing-card {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.listing-card[data-status='fulfilled'] {
+  opacity: 0.75;
+}
+
+.card-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Status Badge ───────────────────────────────────────────── */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.status-badge[data-status='active'] {
+  background: var(--lime-cream);
+  color: #2f6124;
+}
+
+.status-badge[data-status='pending'] {
+  background: #fefcbf;
+  color: #744210;
+}
+
+.status-badge[data-status='fulfilled'] {
+  background: var(--light-teal);
+  color: var(--regal-navy);
+}
+
+.status-badge[data-status='expired'] {
+  background: var(--pastel-pink);
+  color: var(--regal-navy);
+}
+
+/* ─── Card Body ──────────────────────────────────────────────── */
+.card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-chip {
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--input-bg);
+  color: var(--tropical-teal);
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: capitalize;
+}
+
+.post-date {
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 700;
-  color: var(--text-heading);
+  color: var(--regal-navy);
   margin: 0;
   line-height: 1.3;
 }
 
-.card-description {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.5;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.card-footer {
+.interest-row {
   display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-}
-
-.card-meta {
-  font-size: 0.78rem;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
   color: var(--text-muted);
 }
 
-/* Pagination — identical to donations-grid pagination */
-.pagination {
+.fulfilled-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #2f6124;
+  font-weight: 500;
+}
+
+/* ─── Card Actions ───────────────────────────────────────────── */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.action-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  flex: 1;
+}
+
+.btn-primary:hover {
+  background: var(--regal-navy);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--btn-outline-text);
+  border: 1.5px solid var(--btn-outline-border);
+}
+
+.btn-outline:hover {
+  background: var(--light-teal);
+  color: var(--white-smoke);
+}
+
+.btn-ghost {
+  background: var(--white-smoke);
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.btn-ghost:hover {
+  background: var(--input-bg);
+}
+
+/* ─── Add Listing Card ───────────────────────────────────────── */
+.add-listing-card {
+  background: transparent;
+  border: 2px dashed var(--light-teal);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 200px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.add-listing-card:hover {
+  border-color: var(--tropical-teal);
+  color: var(--tropical-teal);
+  background: var(--input-bg);
+}
+
+.add-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--white-smoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.add-listing-card:hover .add-icon {
+  background: var(--light-teal);
+  color: var(--white);
+}
+
+.add-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ─── Requests List ──────────────────────────────────────────── */
+.listings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 36px;
+}
+
+.request-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--white);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.15s;
+}
+
+.request-row:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+}
+
+.request-row[data-status='fulfilled'] {
+  opacity: 0.72;
+}
+
+.request-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.request-category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--input-bg);
+  color: var(--regal-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.request-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.request-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.request-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--regal-navy);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.request-details {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
-.page-btn {
-  min-width: 36px;
-  height: 36px;
-  padding: 0 10px;
-  border: 1.5px solid var(--btn-outline-border);
-  background: #fff;
-  color: var(--btn-outline-text);
-  border-radius: 8px;
-  font-size: 0.875rem;
+.urgency-chip {
+  font-size: 11px;
   font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.urgency-chip[data-urgency='low'] {
+  background: var(--lime-cream);
+  color: #2f6124;
+}
+
+.urgency-chip[data-urgency='medium'] {
+  background: #fffaf0;
+  color: #c05621;
+}
+
+.urgency-chip[data-urgency='high'] {
+  background: var(--pastel-pink);
+  color: var(--regal-navy);
+}
+
+.request-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.token-cost {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--regal-navy);
+}
+
+.fulfilled-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2f6124;
+  background: var(--lime-cream);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.request-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-outline-sm {
+  background: transparent;
+  color: var(--btn-outline-text);
+  border: 1.5px solid var(--btn-outline-border);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
   cursor: pointer;
   font-family: inherit;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: all 0.15s;
 }
 
-.page-btn:hover:not(:disabled) {
-  background: var(--persian-indigo);
-  color: #fff;
-  border-color: var(--persian-indigo);
+.btn-outline-sm:hover {
+  background: var(--light-teal);
+  color: var(--white-smoke);
+  border-color: var(--light-teal);
 }
 
-.page-btn.active {
-  background: var(--persian-indigo);
-  color: #fff;
-  border-color: var(--persian-indigo);
+.btn-ghost-sm {
+  background: var(--white-smoke);
+  color: var(--text-muted);
+  border: none;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
 }
 
-.page-btn:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.btn-ghost-sm:hover {
+  background: var(--input-bg);
+}
+
+/* ─── Add Request Row ────────────────────────────────────────── */
+.add-request-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: 2px dashed var(--light-teal);
+  border-radius: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.add-request-row:hover {
+  border-color: var(--tropical-teal);
+  color: var(--tropical-teal);
+  background: var(--input-bg);
+}
+
+.add-icon-sm {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--white-smoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.add-request-row:hover .add-icon-sm {
+  background: var(--light-teal);
+  color: var(--white);
 }
