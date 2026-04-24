@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Helvetica', sans-serif; color: #333; }
+        .header { text-align: center; border-bottom: 2px solid #2f6124; padding-bottom: 10px; }
+        .content { margin-top: 30px; }
+        .value { font-size: 24px; font-weight: bold; color: #2f6124; }
+        .footer { margin-top: 50px; font-size: 10px; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Benevo Donation Receipt</h1>
+        <p>Official Tax Acknowledgment</p>
+    </div>
+    <div class="content">
+        <p><strong>Donor:</strong> {{ donor_name }}</p>
+        <p><strong>Item Donated:</strong> {{ item_name }}</p>
+        <p><strong>Date:</strong> {{ date }}</p>
+        <p><strong>Estimated Fair Market Value:</strong></p>
+        <p class="value">${{ value }}</p>
+    </div>
+    <div class="footer">
+        <p>Receipt ID: {{ receipt_id }}</p>
+        <p>Thank you for supporting your community through Benevo.</p>
+    </div>
+</body>
+</html>
