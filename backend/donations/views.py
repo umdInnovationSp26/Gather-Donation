@@ -8,6 +8,9 @@ from .serializers import (
     DonationRequestSerializer,
     DonationMatchSerializer,
 )
+#-- RECEIPT --
+from .utils import generate_receipt_pdf 
+from django.utils import timezone
 
 
 class IsOwnerOrReadOnly(permissions.BasePermission):
@@ -47,6 +50,35 @@ class DonationItemListCreateView(generics.ListCreateAPIView):
         if status:
             qs = qs.filter(status=status)
         return qs
+    
+    #---rECEIPT Generation ---
+    def perform_create(self, serializer):
+        # 1. Save the donation item normally
+        donation_item = serializer.save(donor=self.request.user)
+
+        # 2. Check the flags sent from your Angular frontend
+        generate_receipt = self.request.data.get('generate_receipt') == 'true'
+        item_value = self.request.data.get('item_value')
+
+        if generate_receipt:
+            # 3. Prepare data for the PDF template
+            context = {
+                'item_name': donation_item.title,
+                'value': item_value,
+                'donor_name': self.request.user.get_full_name() or self.request.user.username,
+                'date': timezone.now().strftime('%B %d, %Y'),
+                'receipt_id': f"BEN-{donation_item.id}-{timezone.now().year}"
+            }
+
+            # 4. Call the utility to get the PDF bytes
+            pdf_content = generate_receipt_pdf(context)
+
+            if pdf_content:
+                # 5. Save the PDF to the model (Assumes you have a receipt_pdf field)
+                # If you don't have the field yet, you can skip saving and just return the PDF
+                filename = f"receipt_{donation_item.id}.pdf"
+                donation_item.receipt_pdf.save(filename, ContentFile(pdf_content))
+                donation_item.save()
 
 
 class DonationItemDetailView(generics.RetrieveUpdateDestroyAPIView):
