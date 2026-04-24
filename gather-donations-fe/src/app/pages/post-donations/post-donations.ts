@@ -45,7 +45,10 @@ export class PostDonations implements OnInit {
     pickupAddress: '',
     availableDays: [] as string[],
     notes: '',
+    generateReceipt: false, // NEW
+    itemValue: null as number | null, // NEW
   };
+
 
   selectedCategoryName = computed(() => {
     const cat = this.categories().find((c) => c.id === this.formData.categoryId);
@@ -94,6 +97,11 @@ export class PostDonations implements OnInit {
       this.errorMessage.set('Please select a condition.');
       return;
     }
+    //NEW - RECEIPT GENERATION
+    if (this.formData.generateReceipt && !this.formData.itemValue) {
+      this.errorMessage.set('Please provide an estimated item value for the receipt.');
+      return;
+    }
 
     // Build description combining extra fields the backend model doesn't have
     const parts: string[] = [];
@@ -114,7 +122,10 @@ export class PostDonations implements OnInit {
     if (this.imageFile) {
       payload.append('image', this.imageFile, this.imageFile.name);
     }
-
+    payload.append('generate_receipt', String(this.formData.generateReceipt));
+    if (this.formData.itemValue) {
+      payload.append('item_value', String(this.formData.itemValue));
+    }
     this.isSubmitting.set(true);
     this.errorMessage.set('');
 
@@ -129,5 +140,12 @@ export class PostDonations implements OnInit {
         console.error(err);
       },
     });
+
+
+
+
+
+
+    
   }
 }
