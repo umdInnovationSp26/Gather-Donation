@@ -21,7 +21,7 @@
 .page-title {
   font-size: 28px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--regal-navy);
   margin: 0 0 28px 0;
 }
 
@@ -47,7 +47,7 @@
 .form-label {
   font-size: 15px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-secondary);
 }
 
 /* ─── Inputs ─────────────────────────────────────────────────── */
@@ -184,7 +184,7 @@
 .skills-title {
   font-size: 22px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--regal-navy);
   margin: 0;
 }
 

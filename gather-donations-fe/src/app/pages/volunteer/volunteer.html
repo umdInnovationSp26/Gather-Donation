@@ -121,12 +121,11 @@
     </div>
 
     <div class="form-footer">
-      <button class="submit-btn" (click)="onSubmit()">Submit</button>
+      <button class="submit-btn" [disabled]="isSubmitting" (click)="onSubmit()">
+      {{ isSubmitting ? 'Submitting…' : 'Submit' }}
+      </button>
     </div>
   </div>
-  <button class="submit-btn" [disabled]="isSubmitting" (click)="onSubmit()">
-    {{ isSubmitting ? 'Submitting…' : 'Submit' }}
-  </button>
   @if (submitError) {
     <p class="submit-error">{{ submitError }}</p>
   }

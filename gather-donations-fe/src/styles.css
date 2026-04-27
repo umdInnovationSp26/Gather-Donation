@@ -11,12 +11,7 @@ body {
 :root {
   /* ── OLD Colors ─────────────────────────────────────── */
   --white-pointer: #fdf6ff;
-  --amethyst: #9d4edd;
-  --indigo: #3d0066;
-  --persian-indigo: #36096c;
-  --sunset: #ffc880;
-  --princeton-orange: #ff9100;
-
+  
   /* ---- New Colors -------- */
   --white: #ffffff;
   --regal-navy: #053d76;
