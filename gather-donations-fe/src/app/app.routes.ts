@@ -10,6 +10,7 @@ import { Volunteer } from './pages/volunteer/volunteer';
 import { ActiveRequests } from './pages/active-requests/active-requests';
 import { Profile } from './pages/profile/profile';
 import { SignupComponent } from './signup/signup';
+import { EditProfile } from './pages/edit-profile/edit-profile';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,8 @@ export const routes: Routes = [
       { path: 'volunteer', component: Volunteer },
       { path: 'active-requests', component: ActiveRequests },
       { path: 'profile', component: Profile },
-    ],
+      { path: 'edit-profile', component: EditProfile},
+    ]
   },
   { path: '**', redirectTo: 'login' },
 ];

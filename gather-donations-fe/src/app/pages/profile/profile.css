@@ -3,10 +3,11 @@
   padding-right: 40px;
   padding-top: 20px;
   font-family: 'Inter', sans-serif;
+  justify-content: space-between;
 }
 
 .user-name {
-  color: var(--indigo);
+  color: var(--regal-navy);
 }
 
 .profile-header {
@@ -22,8 +23,15 @@
   justify-content: center;
 }
 
-.button-section {
-  align-items: end;
+.right-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-section{
+  margin-right: 60px;
+  justify-content: center;
 }
 
 .left-section {
@@ -33,8 +41,8 @@
 .edit-profile-button {
   background-color: transparent;
   font-size: 20px;
-  color: var(--indigo);
-  border: 2px solid var(--amethyst);
+  color: var(--btn-outline-text);
+  border: 2px solid var(--btn-outline-border);
   padding: 10px 20px 10px 20px;
   border-radius: 20px;
   font-weight: 600;
@@ -46,15 +54,15 @@
 }
 
 .edit-profile-button:hover {
-  background-color: var(--indigo);
-  color: var(--amethyst);
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
   border-color: white;
 }
 
 .post-button {
-  background-color: var(--amethyst);
+  background-color: var(--btn-primary-bg);
   font-size: 20px;
-  color: var(--indigo);
+  color: var(--btn-primary-text);
   border: none;
   padding: 12px 22px 12px 22px;
   border-radius: 20px;
@@ -68,8 +76,8 @@
 }
 
 .post-button:hover {
-  background-color: var(--indigo);
-  color: var(--amethyst);
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
   border-color: white;
 }
 
@@ -78,4 +86,26 @@
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.custom-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: var(--input-bg);
+  box-sizing: border-box;
+  font-size: 1rem;
 }
