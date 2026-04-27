@@ -2,10 +2,11 @@ import { Component, Input, inject, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BalancePanel } from '../../components/balance-panel/balance-panel';
 import { AuthService } from '../../services/auth.service';
+import { ActiveRequests } from '../active-requests/active-requests';
 
 @Component({
   selector: 'app-profile',
-  imports: [RouterLink, BalancePanel],
+  imports: [RouterLink, BalancePanel, ActiveRequests],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
