@@ -14,6 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--bg-card);
+  border-radius: 40px;
+  padding: 40px;
 }
 
 .center-content {
@@ -56,7 +59,7 @@
 .edit-profile-button:hover {
   background-color: var(--btn-secondary-bg);
   color: var(--btn-secondary-text);
-  border-color: white;
+  border-color: transparent
 }
 
 .post-button {

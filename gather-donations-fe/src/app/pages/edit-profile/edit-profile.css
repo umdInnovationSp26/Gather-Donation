@@ -20,6 +20,10 @@
   display: flex;
 }
 
+.form-section-label {
+  color: var(--regal-navy);
+}
+
 /* Edit pf styles (from volunteer pg) */
 
 .form-wrapper {
@@ -46,7 +50,7 @@
 .form-label {
   font-size: 15px;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-secondary);
 }
 
 .form-input {
