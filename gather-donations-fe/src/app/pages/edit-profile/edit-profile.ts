@@ -12,11 +12,16 @@ export class EditProfile {
 
   private auth = inject(AuthService);
 
-  displayName = computed(() => {
+  displayFirstName = computed(() => {
     const user = this.auth.currentUser();
     if (!user) return '';
-    const full = `${user.first_name} ${user.last_name}`.trim();
-    return full || user.email;
+    return user.first_name;
+  });
+
+  displayLastName = computed(() => {
+    const user = this.auth.currentUser();
+    if (!user) return '';
+    return user.last_name;
   });
 
   displayEmail = computed(() => {
@@ -32,7 +37,7 @@ export class EditProfile {
   displayUsername = computed(() =>{
     const user = this.auth.currentUser();
     if (!user) return '';
-    const username = `@${user.username}`.trim();
+    const username = `${user.username}`.trim();
     return username;
   });
 }

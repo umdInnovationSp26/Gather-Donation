@@ -1,3 +1,118 @@
+/* ─── Variables ─────────────────────────────────────────────── */
+:host {
+  --white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-medium: #4a4a4a;
+  --border-radius-input: 999px;
+  --border-radius-card: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/**/
+.edit-profile-page {
+  background: var(--white);
+  min-height: 100%;
+  padding: 32px 40px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.left-section {
+  display: flex;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+/* Edit pf styles (from volunteer pg) */
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.form-input {
+  width: 100%;
+  max-width: 540px;
+  height: 52px;
+  padding: 0 24px;
+  background: var(--white-smoke);
+  border: none;
+  border-radius: var(--border-radius-input);
+  font-size: 15px;
+  color: var(--text-medium);
+  outline: none;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.submit-btn {
+  background: var(--regal-navy);
+  color: var(--white);
+  border: none;
+  border-radius: 999px;
+  padding: 16px 52px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(5,61,118, 0.35);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: var(--btn-highlight-bg);
+  color: #2f6124;
+  box-shadow: 0 6px 22px rgba(43, 99, 31, 0.45);
+  transform: translateY(-1px);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* PFP old styles */
+
 .profile-page {
   padding-left: 40px;
   padding-right: 40px;
@@ -10,35 +125,6 @@
   color: var(--regal-navy);
 }
 
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-
-
-.center-content {
-  display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-  justify-content: center;
-}
-
-.right-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button-section{
-  margin-right: 60px;
-  justify-content: center;
-}
-
-.left-section {
-  display: flex;
-}
 
 .edit-profile-button {
   background-color: transparent;
