@@ -44,7 +44,7 @@
   color: var(--btn-outline-text);
   border: 2px solid var(--btn-outline-border);
   padding: 10px 20px 10px 20px;
-  border-radius: 20px;
+  border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -65,7 +65,7 @@
   color: var(--btn-primary-text);
   border: none;
   padding: 12px 22px 12px 22px;
-  border-radius: 20px;
+  border-radius: 999px;
   font-weight: 600;
   cursor: pointer;
   transition:
