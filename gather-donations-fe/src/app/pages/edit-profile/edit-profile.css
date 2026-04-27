@@ -18,8 +18,6 @@
 
 .profile-form {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 /* Edit pf styles (from volunteer pg) */
@@ -30,6 +28,7 @@
   justify-content: center;
   gap: 32px;
   width: 600px;
+  padding-left: 50px;
 }
 
 .form-section {
@@ -122,7 +121,7 @@
 /*********Edit profile image section **********/
 
 .pfp-upload{
-  display: flex;
+  vertical-align: top;
   width: 150px;
   flex-direction: column;
 }
@@ -140,7 +139,7 @@
 
 .upload-btn {
   width: 150px;
-  padding: 12px 42px;
+  padding: 12px;
   background: var(--btn-primary-bg);
   color: var(--btn-primary-text);
   border: 2px transparent;
