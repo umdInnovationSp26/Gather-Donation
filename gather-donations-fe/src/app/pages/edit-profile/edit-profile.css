@@ -13,26 +13,13 @@
   background: var(--white);
   min-height: 100%;
   padding: 32px 40px 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.left-section {
-  display: flex;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 
-.center-content {
+.profile-form {
   display: flex;
-  flex-direction: column;
-  padding-left: 20px;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Edit pf styles (from volunteer pg) */
@@ -40,8 +27,9 @@
 .form-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: 32px;
+  width: 600px;
 }
 
 .form-section {
@@ -84,8 +72,8 @@
 }
 
 .submit-btn {
-  background: var(--regal-navy);
-  color: var(--white);
+  background: var(--btn-highlight-bg);
+  color: #2f6124;
   border: none;
   border-radius: 999px;
   padding: 16px 52px;
@@ -93,7 +81,6 @@
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(5,61,118, 0.35);
   transition:
     background 0.2s,
     box-shadow 0.2s,
@@ -101,9 +88,8 @@
 }
 
 .submit-btn:hover {
-  background: var(--btn-highlight-bg);
-  color: #2f6124;
-  box-shadow: 0 6px 22px rgba(43, 99, 31, 0.45);
+  background: #b5d174;
+  box-shadow: 0 6px 22px rgba(43, 99, 31, 0.25);
   transform: translateY(-1px);
 }
 
@@ -111,62 +97,38 @@
   transform: translateY(0);
 }
 
-/* PFP old styles */
-
-.profile-page {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 20px;
-  font-family: 'Inter', sans-serif;
-  justify-content: space-between;
-}
-
-.user-name {
-  color: var(--regal-navy);
-}
-
-
-.edit-profile-button {
-  background-color: transparent;
-  font-size: 20px;
+.cancel-btn {
+  background: transparent;
   color: var(--btn-outline-text);
   border: 2px solid var(--btn-outline-border);
-  padding: 10px 20px 10px 20px;
-  border-radius: 20px;
-  font-weight: 600;
+  border-radius: 999px;
+  padding: 16px 52px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
   transition:
-    background-color 0.15s,
-    color 0.15s;
-  font-family: 'Inter', sans-serif;
+    background 0.2s,
+    transform 0.1s;
 }
 
-.edit-profile-button:hover {
-  background-color: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  border-color: white;
+.cancel-btn:hover {
+  background: var(--light-teal);
+  color: var(--white-smoke);
+  border-color: var(--light-teal);
 }
 
-.post-button {
-  background-color: var(--btn-primary-bg);
-  font-size: 20px;
-  color: var(--btn-primary-text);
-  border: none;
-  padding: 12px 22px 12px 22px;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition:
-    background-color 0.15s,
-    color 0.15s;
-  font-family: 'Inter', sans-serif;
-  margin-right: 5px;
+
+/*********Edit profile image section **********/
+
+.pfp-upload{
+  display: flex;
+  width: 150px;
+  flex-direction: column;
 }
 
-.post-button:hover {
-  background-color: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
-  border-color: white;
+.img-container{
+  width: 150px;
 }
 
 .profile-picture {
@@ -175,6 +137,31 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.upload-btn {
+  width: 150px;
+  padding: 12px 42px;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 2px transparent;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+  align-self: center;
+}
+
+.upload-btn:hover {
+  background: var(--regal-navy);
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+/* PFP old styles */
 
 .input-group {
   text-align: left;

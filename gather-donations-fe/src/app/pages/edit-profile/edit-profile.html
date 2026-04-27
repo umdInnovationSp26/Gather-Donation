@@ -1,7 +1,13 @@
 <div class="edit-profile-page">
-        <div class="img-container">
-            <img class="profile-picture" [src]="avatarUrl()" alt="avatar"/>
+    <div class="profile-form">
+        <div class="pfp-upload">
+            <div class="img-container">
+                <img class="profile-picture" [src]="avatarUrl()" alt="avatar"/>
+            </div>
+            <input #fileInput type="file" accept="image/*" class="hidden-file-input" (change)="onFileSelected($event)" />
+            <button class="upload-btn" type="button" (click)="triggerFileInput()">Choose Photo</button>
         </div>
+
         <div class="form-wrapper">
             <!-- edit profile form -->
             <div class="form-section">
@@ -23,7 +29,7 @@
                     <input id="email" type="text" class="form-input" placeholder="{{ displayEmail() }}"/>
                 </div>
             </div>
-            
+                
             <div class="form-section">
                 <h2>Change Password</h2>
                 <div class="form-group">
@@ -40,10 +46,11 @@
                 </div>
             </div>
         </div>
+    </div>
 
     <div class="form-footer">
         <button class="submit-btn" routerLink="/profile">Submit</button>
-        <button class="submit-btn" routerLink="/profile">Cancel</button>
+        <button class="cancel-btn" routerLink="/profile">Cancel</button>
     </div>
     <p class="the-curse" style="color: transparent">This class has killed my soul and my whimsy</p>
 </div>
