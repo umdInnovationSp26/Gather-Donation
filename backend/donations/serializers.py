@@ -17,9 +17,9 @@ class DonationItemSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'donor', 'donor_name', 'title', 'description',
             'category', 'category_name', 'condition', 'location',
-            'status', 'image', 'created_at', 'updated_at',
+            'status', 'image', 'receipt_pdf', 'created_at', 'updated_at',
         ]
-        read_only_fields = ['id', 'donor', 'created_at', 'updated_at']
+        read_only_fields = ['id', 'donor', 'created_at', 'updated_at','receipt_pdf']
 
     def get_donor_name(self, obj):
         return f'{obj.donor.first_name} {obj.donor.last_name}'.strip() or obj.donor.email
