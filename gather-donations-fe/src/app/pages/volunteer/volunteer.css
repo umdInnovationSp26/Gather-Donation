@@ -31,6 +31,47 @@
   gap: 32px;
 }
 
+/* ─── Header ─────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 36px 20px;
+  background: var(--white);
+  border-bottom: 1px solid #eef0f2;
+}
+
+.header-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--lime-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2f6124;
+  flex-shrink: 0;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--regal-navy);
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
 /* ─── Form Groups ────────────────────────────────────────────── */
 .form-section {
   display: flex;
