@@ -183,3 +183,10 @@ label {
   box-sizing: border-box;
   font-size: 1rem;
 }
+
+.submit-error {
+  color: #b91c1c;
+  font-size: 0.875rem;
+  margin-top: 8px;
+  text-align: right;
+}

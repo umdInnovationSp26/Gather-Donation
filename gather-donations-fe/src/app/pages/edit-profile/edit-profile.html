@@ -14,19 +14,19 @@
                 <h2>User Profile</h2>
                 <div class="form-group">
                     <label class="form-label">First Name</label>
-                    <input id="first-name" type="text" class="form-input" placeholder="{{ displayFirstName() }}"/>
+                    <input id="first-name" type="text" class="form-input" [(ngModel)]="firstName" placeholder="{{ displayFirstName() }}"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Last Name</label>
-                    <input id="last-name" type="text" class="form-input" placeholder="{{ displayLastName() }}"/>
+                    <input id="last-name" type="text" class="form-input" [(ngModel)]="lastName" placeholder="{{ displayLastName() }}"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Username</label>
-                    <input id="username" type="text" class="form-input" placeholder="{{ displayUsername() }}"/>
+                    <input id="username" type="text" class="form-input" [(ngModel)]="username" placeholder="{{ displayUsername() }}"/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Email Address</label>
-                    <input id="email" type="text" class="form-input" placeholder="{{ displayEmail() }}"/>
+                    <input id="email" type="text" class="form-input" [(ngModel)]="email" placeholder="{{ displayEmail() }}"/>
                 </div>
             </div>
                 
@@ -34,23 +34,26 @@
                 <h2>Change Password</h2>
                 <div class="form-group">
                     <label class="form-label">Current Password</label>
-                    <input id="password" type="text" class="form-input" placeholder=""/>
+                    <input id="password" type="text" class="form-input" [(ngModel)]="currentPassword" placeholder=""/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">New Password</label>
-                    <input id="new-password" type="text" class="form-input" placeholder=""/>
+                    <input id="new-password" type="text" class="form-input" [(ngModel)]="newPassword" placeholder=""/>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Confirm New Password</label>
-                    <input id="confirm-new-pass" type="text" class="form-input" placeholder=""/>
+                    <input id="confirm-new-pass" type="text" class="form-input" [(ngModel)]="confirmPassword" placeholder=""/>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="form-footer">
-        <button class="submit-btn" routerLink="/profile">Submit</button>
+        <button class="submit-btn">Submit</button>
         <button class="cancel-btn" routerLink="/profile">Cancel</button>
     </div>
+    @if (submitError) {
+    <p class="submit-error">{{ submitError }}</p>
+    }
     <p class="the-curse" style="color: transparent">This class has killed my soul and my whimsy</p>
 </div>
