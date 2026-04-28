@@ -96,6 +96,24 @@
           </div>
         </div>
       </div>
+<!--added new-->
+      <div class="form-section receipt-toggle-section">
+        <div class="checkbox-group">
+          <input type="checkbox" id="generateReceipt" [(ngModel)]="formData.generateReceipt" name="generateReceipt" class="form-checkbox">
+          <label for="generateReceipt" class="form-label">Generate tax write-off receipt?</label>
+        </div>
+
+        @if (formData.generateReceipt) {
+          <div class="form-row animate-fade-in">
+            <div class="form-group full">
+              <label class="form-label" for="itemValue">Estimated Item Value ($) <span class="required">*</span></label>
+              <input id="itemValue" type="number" class="form-input" [(ngModel)]="formData.itemValue" placeholder="e.g. 50.00" />
+              <p class="input-hint">This value will appear on your generated PDF receipt.</p>
+            </div>
+          </div>
+            }
+        </div>
+<!--end new-->
 
       <!-- Pickup Info -->
       <div class="form-section">

@@ -47,6 +47,8 @@ class DonationItem(models.Model):
     image = models.ImageField(upload_to='donation_images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    """NEWNEW"""
+    receipt_pdf = models.FileField(upload_to='receipts/', null=True, blank=True)
 
     def __str__(self):
         return f'{self.title} ({self.get_status_display()})'
