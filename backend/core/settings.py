@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'donations',
     'rest_framework',
     'corsheaders',
-    'donations',
     'users',
 ]
 

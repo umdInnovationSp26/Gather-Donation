@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DonationsService } from '../../services/donations.service';
+import { AuthService } from '../../services/auth.service';
 import { Category } from '../../models/donation.model';
 
 const CONDITION_MAP: Record<string, string> = {
@@ -25,6 +26,7 @@ export class PostDonations implements OnInit {
 
   private donationsService = inject(DonationsService);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   categories = signal<Category[]>([]);
   isSubmitting = signal(false);
@@ -89,6 +91,10 @@ export class PostDonations implements OnInit {
   }
 
   onSubmit(): void {
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
     if (!this.formData.title.trim()) {
       this.errorMessage.set('Item name is required.');
       return;

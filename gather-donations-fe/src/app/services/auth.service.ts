@@ -2,7 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AuthTokens, LoginPayload, RegisterPayload, User } from '../models/donation.model';
 
@@ -32,6 +32,9 @@ export class AuthService {
 
   refreshToken(): Observable<{ access: string }> {
     const refresh = localStorage.getItem(REFRESH_KEY);
+    if (!refresh) {
+      return throwError(() => new Error('No refresh token'));
+    }
     return this.http
       .post<{ access: string }>(`${this.base}/token/refresh/`, { refresh })
       .pipe(tap(res => localStorage.setItem(ACCESS_KEY, res.access)));

@@ -8,8 +8,8 @@ from .serializers import (
     DonationRequestSerializer,
     DonationMatchSerializer,
 )
-#-- RECEIPT --
-from .utils import generate_receipt_pdf 
+from .utils import generate_receipt_pdf
+from django.core.files.base import ContentFile
 from django.utils import timezone
 
 
